@@ -17,64 +17,83 @@ const HeroSection = () => {
         <div className="cinema-overlay absolute inset-0" />
       </div>
 
+      {/* Side slide indicators */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col gap-4">
+        {["01", "02", "03"].map((num, i) => (
+          <span
+            key={num}
+            className={`font-body text-xs tracking-widest transition-all duration-500 ${
+              i === 0 ? "text-primary" : "text-foreground/20"
+            }`}
+          >
+            {num}
+          </span>
+        ))}
+      </div>
+
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        {/* Vertical line */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ height: 0 }}
+          animate={{ height: 60 }}
           transition={{ duration: 1, delay: 0.3 }}
+          className="w-px bg-primary/40 mx-auto mb-10"
+        />
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="font-body text-[11px] md:text-xs tracking-[0.5em] uppercase text-primary/80 mb-8"
         >
-          <p className="font-body text-sm md:text-base tracking-[0.3em] uppercase text-primary mb-6">
-            Produzione Video Corporate Premium
-          </p>
-        </motion.div>
+          Produzione Video Corporate Premium
+        </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-8"
+          transition={{ duration: 1.2, delay: 0.8 }}
+          className="font-display text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-light leading-[1.1] mb-10 tracking-wide"
         >
-          Non Giriamo Solo Video.{" "}
-          <span className="text-gradient-gold">Raccontiamo Storie</span>{" "}
-          Che Muovono i Brand.
+          Tradizione, Innovazione{" "}
+          <br className="hidden md:block" />
+          e <span className="italic text-primary">Qualità</span>
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center mt-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center mt-14"
         >
           <a
             href="#portfolio"
-            className="px-10 py-4 bg-primary text-primary-foreground font-body font-semibold text-sm uppercase tracking-widest hover:bg-gold-light transition-colors duration-300"
+            className="px-10 py-4 bg-primary/90 text-primary-foreground font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
           >
-            Scopri i Nostri Lavori
+            Scopri i Lavori
           </a>
           <a
             href="#contact"
-            className="px-10 py-4 border border-foreground/30 text-foreground font-body font-semibold text-sm uppercase tracking-widest hover:border-primary hover:text-primary transition-all duration-300"
+            className="px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:border-primary hover:text-primary transition-all duration-500"
           >
             Prenota una Call
           </a>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Bottom scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        transition={{ delay: 2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-5 h-9 border-2 border-foreground/30 rounded-full flex justify-center"
-        >
-          <motion.div className="w-1 h-2 bg-primary rounded-full mt-2" />
-        </motion.div>
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-px h-10 bg-foreground/20"
+        />
       </motion.div>
     </section>
   );

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -21,81 +22,76 @@ const Navbar = () => {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, delay: 0.5 }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-border"
+          ? "bg-background/95 backdrop-blur-xl border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
-        <a href="#home" className="font-display text-2xl font-bold tracking-tight">
-          <span className="text-foreground">Arte</span>
-          <span className="text-gradient-gold">vent</span>
-        </a>
-
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-body font-medium tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors duration-300"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <a
-          href="#contact"
-          className="hidden md:inline-flex px-6 py-2.5 text-sm font-body font-semibold uppercase tracking-wider border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-        >
-          Prenota una Call
-        </a>
-
-        {/* Mobile hamburger */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24">
+        {/* Hamburger - left */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden flex flex-col gap-1.5"
-          aria-label="Apri menu"
+          className="text-foreground/70 hover:text-primary transition-colors"
+          aria-label="Menu"
         >
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-6 h-0.5 bg-foreground transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
+
+        {/* Logo - center */}
+        <a href="#home" className="absolute left-1/2 -translate-x-1/2 text-center">
+          <span className="font-display text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-foreground">
+            Arte
+          </span>
+          <span className="font-display text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-primary">
+            vent
+          </span>
+          <p className="font-body text-[9px] tracking-[0.5em] uppercase text-muted-foreground mt-0.5">
+            Studio
+          </p>
+        </a>
+
+        {/* Right side - CTA */}
+        <a
+          href="#contact"
+          className="hidden md:inline-flex font-body text-[11px] font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500"
+        >
+          Contattaci
+        </a>
+        <div className="md:hidden w-5" />
       </div>
 
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border"
-        >
-          <div className="flex flex-col items-center py-8 gap-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-body font-medium tracking-widest uppercase text-muted-foreground hover:text-primary transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="px-6 py-2.5 text-sm font-body font-semibold uppercase tracking-wider border border-primary text-primary"
-            >
-              Prenota una Call
-            </a>
-          </div>
-        </motion.div>
-      )}
+      {/* Full-screen menu overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="fixed inset-0 top-24 bg-background/98 backdrop-blur-2xl z-40"
+          >
+            <div className="flex flex-col items-center justify-center h-full gap-10 -mt-24">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  className="font-display text-3xl md:text-4xl font-light tracking-[0.15em] uppercase text-foreground/80 hover:text-primary transition-colors duration-500"
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

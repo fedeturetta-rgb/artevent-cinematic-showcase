@@ -36,39 +36,60 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="section-padding">
-      <div ref={ref} className="max-w-7xl mx-auto">
+      <div ref={ref} className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ height: 0 }}
+          animate={inView ? { height: 60 } : {}}
+          transition={{ duration: 0.8 }}
+          className="w-px bg-primary/30 mx-auto mb-12"
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
             Cosa Facciamo
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold">
-            I Nostri <span className="text-gradient-gold">Servizi</span>
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light">
+            I Nostri <span className="italic text-primary">Servizi</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 40 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-gradient-card border-glow rounded-sm p-8 hover-card-lift group cursor-pointer"
+              className="bg-background p-10 md:p-12 group cursor-pointer hover:bg-card transition-colors duration-700"
             >
-              <service.icon className="w-10 h-10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300" />
-              <h3 className="font-display text-xl font-semibold mb-3">
+              <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
+              <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground font-body text-sm leading-relaxed">
+              <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide">
                 {service.description}
               </p>
             </motion.div>
           ))}
+          {/* Empty cell to complete the grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="bg-background p-10 md:p-12 flex items-center justify-center"
+          >
+            <a
+              href="#contact"
+              className="font-body text-[11px] tracking-[0.3em] uppercase text-primary/70 hover:text-primary transition-colors duration-500 border-b border-primary/30 pb-1"
+            >
+              Richiedi un Preventivo
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>
