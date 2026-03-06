@@ -5,22 +5,22 @@ const projects = [
   {
     title: "TEST1",
     category: "Film Aziendale",
-    image: "https://vimeo.com/1170647762?fl=ip&fe=ec",
+    video: "/videos/hero-bg.mov",
   },
   {
     title: "Summit Conference",
     category: "Copertura Evento",
-    image: "https://images.unsplash.com/photo-1664817550935-79d3b6255a82?q=80&w=800",
+    video: "/videos/hero-bg.mov",
   },
   {
     title: "Aura Product Launch",
     category: "Video Prodotto",
-    image: "https://images.unsplash.com/photo-1654723011663-2ac59c385b16?crop=entropy&cs=srgb&fm=jpg&q=85",
+    video: "/videos/hero-bg.mov",
   },
   {
     title: "CEO Vision Series",
     category: "Intervista Executive",
-    image: "https://images.unsplash.com/photo-1654723011680-0e037c2a4f18?crop=entropy&cs=srgb&fm=jpg&q=85",
+    video: "/videos/hero-bg.mov",
   },
 ];
 
@@ -55,10 +55,13 @@ const PortfolioSection = () => {
               className="group cursor-pointer"
             >
               <div className="aspect-[4/3] overflow-hidden mb-5">
-                <img
-                  src={project.image}
-                  alt={project.title}
+                <video
+                  src={project.video}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  muted
+                  autoPlay
+                  loop
+                  playsInline
                 />
               </div>
               <h3 className="font-display text-xl md:text-2xl font-light tracking-wide mb-1">
