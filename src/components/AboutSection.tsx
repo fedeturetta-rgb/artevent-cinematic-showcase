@@ -12,7 +12,7 @@ const AboutSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Configura l'URL del tuo video qui
-  const videoUrl = "https://www.youtube.com/embed/YOUR_VIDEO_ID";
+  const videoUrl = "https://vimeo.com/1171082957?fl=ip&fe=ec";
   // Oppure usa un URL di video locale: "/videos/reel.mp4"
 
   return (
