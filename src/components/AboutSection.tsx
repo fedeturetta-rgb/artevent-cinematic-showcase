@@ -1,9 +1,19 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+} from "@/components/ui/dialog";
 
 const AboutSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  // Configura l'URL del tuo video qui
+  const videoUrl = "https://www.youtube.com/embed/YOUR_VIDEO_ID";
+  // Oppure usa un URL di video locale: "/videos/reel.mp4"
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
@@ -57,7 +67,10 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="aspect-[4/3] bg-gradient-card border border-border overflow-hidden relative group">
+            <div
+              onClick={() => setIsVideoOpen(true)}
+              className="aspect-[4/3] bg-gradient-card border border-border overflow-hidden relative group cursor-pointer transition-all duration-700 hover:border-primary"
+            >
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors duration-700">
@@ -72,6 +85,52 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Video Dialog */}
+      <Dialog open={isVideoOpen} onOpenChange={setIsVideoOpen}>
+        <DialogContent className="max-w-4xl bg-black border-border">
+          <DialogClose className="absolute top-4 right-4 z-50" />
+          <div className="w-full aspect-video">
+            {videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") ? (
+              // YouTube embed
+              <iframe
+                width="100%"
+                height="100%"
+                src={videoUrl}
+                title="Artevent Studio Reel"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+              />
+            ) : videoUrl.startsWith("http") ? (
+              // Video from URL
+              <video
+                width="100%"
+                height="100%"
+                controls
+                autoPlay
+                className="rounded-lg bg-black"
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              // Local video file
+              <video
+                width="100%"
+                height="100%"
+                controls
+                autoPlay
+                className="rounded-lg bg-black"
+              >
+                <source src={videoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
