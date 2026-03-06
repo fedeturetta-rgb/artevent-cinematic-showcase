@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 const projects = [
   {
-    title: "Nexus Brand Film",
+    title: "TEST1",
     category: "Film Aziendale",
     image: "https://images.unsplash.com/photo-1619955888965-354ae3b9fd68?q=80&w=800",
   },
