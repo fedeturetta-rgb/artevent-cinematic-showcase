@@ -12,7 +12,7 @@ const HeroSection = () => {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/videos/hero-bg.mov" type="video/quicktime" />
+          <source src="https://vimeo.com/1171082957?fl=ip&fe=ec" type="video/quicktime" />
         </video>
         <div className="cinema-overlay absolute inset-0" />
       </div>
