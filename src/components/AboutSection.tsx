@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const AboutSection = () => {
@@ -8,54 +7,70 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
-      <div ref={ref} className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        {/* Text */}
+      <div ref={ref} className="max-w-6xl mx-auto">
+        {/* Top decorative line */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
+          initial={{ height: 0 }}
+          animate={inView ? { height: 60 } : {}}
           transition={{ duration: 0.8 }}
+          className="w-px bg-primary/30 mx-auto mb-12"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
             Chi è Artevent Studio
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 leading-tight">
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight">
             Dove la Visione Incontra{" "}
-            <span className="text-gradient-gold">l'Arte Cinematografica</span>
+            <span className="italic text-primary">l'Arte Cinematografica</span>
           </h2>
-          <div className="w-20 h-0.5 bg-primary mb-8" />
-          <p className="text-muted-foreground font-body leading-relaxed mb-6 text-lg">
-            Artevent Studio è una casa di produzione video premium, scelta dai brand
-            più prestigiosi per trasformare le loro narrazioni in esperienze visive potenti.
-          </p>
-          <p className="text-muted-foreground font-body leading-relaxed">
-            Con un team di registi, direttori della fotografia e montatori pluripremiati,
-            curiamo ogni singolo fotogramma con intenzione — unendo arte e storytelling
-            strategico per elevare il tuo brand sopra il rumore.
-          </p>
         </motion.div>
 
-        {/* Visual */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
-        >
-          <div className="aspect-[4/3] bg-gradient-card border-glow rounded-sm overflow-hidden relative">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-20 h-20 border-2 border-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                  <div className="w-0 h-0 border-l-[16px] border-l-primary border-t-[10px] border-t-transparent border-b-[10px] border-b-transparent ml-1" />
+        <div className="grid md:grid-cols-2 gap-20 items-center">
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <p className="text-foreground/70 font-body text-sm leading-[2] mb-8">
+              Artevent Studio è una casa di produzione video premium, scelta dai brand
+              più prestigiosi per trasformare le loro narrazioni in esperienze visive potenti.
+            </p>
+            <p className="text-foreground/50 font-body text-sm leading-[2]">
+              Con un team di registi, direttori della fotografia e montatori pluripremiati,
+              curiamo ogni singolo fotogramma con intenzione — unendo arte e storytelling
+              strategico per elevare il tuo brand sopra il rumore.
+            </p>
+            <div className="luxwine-line-h mt-10" />
+          </motion.div>
+
+          {/* Visual */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
+          >
+            <div className="aspect-[4/3] bg-gradient-card border border-border overflow-hidden relative group">
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors duration-700">
+                    <div className="w-0 h-0 border-l-[14px] border-l-primary/70 border-t-[9px] border-t-transparent border-b-[9px] border-b-transparent ml-1 group-hover:border-l-primary transition-colors duration-700" />
+                  </div>
+                  <p className="font-body text-[10px] tracking-[0.4em] uppercase text-muted-foreground">
+                    Guarda il Nostro Reel
+                  </p>
                 </div>
-                <p className="text-muted-foreground font-body text-sm tracking-widest uppercase">
-                  Guarda il Nostro Reel
-                </p>
               </div>
             </div>
-          </div>
-          {/* Decorative element */}
-          <div className="absolute -bottom-4 -right-4 w-full h-full border border-primary/20 rounded-sm -z-10" />
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

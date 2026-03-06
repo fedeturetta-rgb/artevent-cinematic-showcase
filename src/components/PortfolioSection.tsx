@@ -31,7 +31,7 @@ const projects = [
   {
     title: "Gala Annuale Apex",
     category: "Copertura Evento",
-    description: "Gala di gala catturato con eleganza cinematografica e montaggio in tempo reale.",
+    description: "Gala catturato con eleganza cinematografica e montaggio in tempo reale.",
   },
 ];
 
@@ -42,40 +42,47 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" className="section-padding bg-gradient-dark">
-      <div ref={ref} className="max-w-7xl mx-auto">
+      <div ref={ref} className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ height: 0 }}
+          animate={inView ? { height: 60 } : {}}
+          transition={{ duration: 0.8 }}
+          className="w-px bg-primary/30 mx-auto mb-12"
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
-          <p className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-4">
+          <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
             Lavori Selezionati
           </p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold">
-            Il Nostro <span className="text-gradient-gold">Portfolio</span>
+          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light">
+            Il Nostro <span className="italic text-primary">Portfolio</span>
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               onClick={() => setSelected(i)}
-              className="group cursor-pointer relative aspect-[16/10] bg-gradient-card border-glow rounded-sm overflow-hidden hover-card-lift"
+              className="group cursor-pointer relative aspect-[4/3] bg-gradient-card border border-border overflow-hidden hover-card-lift"
             >
-              <div className="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-background/90 via-background/40 to-transparent">
-                <span className="text-primary font-body text-xs tracking-[0.2em] uppercase mb-1">
+              <div className="absolute inset-0 flex flex-col justify-end p-8">
+                <span className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-2">
                   {project.category}
                 </span>
-                <h3 className="font-display text-lg font-semibold">{project.title}</h3>
+                <h3 className="font-display text-xl font-light tracking-wide">{project.title}</h3>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-14 h-14 border-2 border-primary rounded-full flex items-center justify-center bg-background/50 backdrop-blur-sm">
-                  <Play className="w-5 h-5 text-primary ml-0.5" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="w-16 h-16 border border-primary/40 rounded-full flex items-center justify-center bg-background/30 backdrop-blur-sm">
+                  <Play className="w-5 h-5 text-primary ml-0.5" strokeWidth={1} />
                 </div>
               </div>
             </motion.div>
@@ -90,34 +97,34 @@ const PortfolioSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-6"
+            className="fixed inset-0 z-50 bg-background/98 backdrop-blur-2xl flex items-center justify-center p-6"
             onClick={() => setSelected(null)}
           >
             <button
               onClick={() => setSelected(null)}
-              className="absolute top-6 right-6 text-foreground/60 hover:text-foreground transition-colors"
+              className="absolute top-8 right-8 text-foreground/40 hover:text-foreground transition-colors"
             >
-              <X className="w-8 h-8" />
+              <X className="w-6 h-6" strokeWidth={1} />
             </button>
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               className="max-w-3xl w-full"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-video bg-gradient-card border-glow rounded-sm flex items-center justify-center mb-6">
-                <div className="w-20 h-20 border-2 border-primary rounded-full flex items-center justify-center">
-                  <Play className="w-8 h-8 text-primary ml-1" />
+              <div className="aspect-video bg-gradient-card border border-border flex items-center justify-center mb-8">
+                <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
+                  <Play className="w-7 h-7 text-primary ml-1" strokeWidth={1} />
                 </div>
               </div>
-              <h3 className="font-display text-2xl font-bold mb-2">
-                {projects[selected].title}
-              </h3>
-              <p className="text-primary font-body text-sm tracking-widest uppercase mb-3">
+              <p className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-3">
                 {projects[selected].category}
               </p>
-              <p className="text-muted-foreground font-body leading-relaxed">
+              <h3 className="font-display text-3xl font-light mb-4 tracking-wide">
+                {projects[selected].title}
+              </h3>
+              <p className="text-muted-foreground font-body text-sm leading-[2]">
                 {projects[selected].description}
               </p>
             </motion.div>

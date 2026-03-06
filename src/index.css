@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Raleway:wght@200;300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    --background: 220 15% 5%;
-    --foreground: 40 10% 92%;
+    --background: 30 5% 7%;
+    --foreground: 35 15% 85%;
 
-    --card: 220 12% 8%;
-    --card-foreground: 40 10% 92%;
+    --card: 30 5% 10%;
+    --card-foreground: 35 15% 85%;
 
-    --popover: 220 12% 8%;
-    --popover-foreground: 40 10% 92%;
+    --popover: 30 5% 10%;
+    --popover-foreground: 35 15% 85%;
 
-    --primary: 43 55% 55%;
-    --primary-foreground: 220 15% 5%;
+    --primary: 33 30% 52%;
+    --primary-foreground: 30 5% 7%;
 
-    --secondary: 220 10% 12%;
-    --secondary-foreground: 40 10% 85%;
+    --secondary: 30 5% 12%;
+    --secondary-foreground: 35 10% 70%;
 
-    --muted: 220 10% 15%;
-    --muted-foreground: 220 10% 55%;
+    --muted: 30 5% 15%;
+    --muted-foreground: 30 8% 50%;
 
-    --accent: 43 55% 55%;
-    --accent-foreground: 220 15% 5%;
+    --accent: 33 30% 52%;
+    --accent-foreground: 30 5% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 10% 18%;
-    --input: 220 10% 18%;
-    --ring: 43 55% 55%;
+    --border: 30 8% 18%;
+    --input: 30 8% 18%;
+    --ring: 33 30% 52%;
 
-    --radius: 0.5rem;
+    --radius: 0px;
 
-    --gold: 43 55% 55%;
-    --gold-light: 43 60% 70%;
-    --gold-dark: 43 50% 40%;
-    --charcoal: 220 12% 8%;
-    --charcoal-light: 220 10% 14%;
-    --deep-black: 220 15% 3%;
+    --gold: 33 30% 52%;
+    --gold-light: 33 35% 65%;
+    --gold-dark: 33 25% 38%;
+    --charcoal: 30 5% 10%;
+    --charcoal-light: 30 5% 14%;
+    --deep-black: 30 5% 4%;
 
-    --font-display: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Raleway', system-ui, sans-serif;
 
-    --sidebar-background: 220 12% 8%;
-    --sidebar-foreground: 40 10% 92%;
-    --sidebar-primary: 43 55% 55%;
-    --sidebar-primary-foreground: 220 15% 5%;
-    --sidebar-accent: 220 10% 15%;
-    --sidebar-accent-foreground: 40 10% 92%;
-    --sidebar-border: 220 10% 18%;
-    --sidebar-ring: 43 55% 55%;
+    --sidebar-background: 30 5% 10%;
+    --sidebar-foreground: 35 15% 85%;
+    --sidebar-primary: 33 30% 52%;
+    --sidebar-primary-foreground: 30 5% 7%;
+    --sidebar-accent: 30 5% 15%;
+    --sidebar-accent-foreground: 35 15% 85%;
+    --sidebar-border: 30 8% 18%;
+    --sidebar-ring: 33 30% 52%;
   }
 }
 
@@ -91,34 +91,54 @@
   }
 
   .glow-gold {
-    box-shadow: 0 0 40px -10px hsl(var(--gold) / 0.3);
+    box-shadow: 0 0 40px -10px hsl(var(--gold) / 0.2);
   }
 
   .border-glow {
-    border: 1px solid hsl(var(--gold) / 0.15);
+    border: 1px solid hsl(var(--gold) / 0.12);
   }
 
   .section-padding {
-    @apply px-6 py-24 md:px-12 lg:px-20 xl:px-32;
+    @apply px-6 py-28 md:px-12 lg:px-20 xl:px-32;
   }
 
   .cinema-overlay {
     background: linear-gradient(
       to bottom,
-      hsl(var(--deep-black) / 0.7) 0%,
-      hsl(var(--deep-black) / 0.4) 40%,
-      hsl(var(--deep-black) / 0.6) 70%,
+      hsl(var(--deep-black) / 0.6) 0%,
+      hsl(var(--deep-black) / 0.3) 40%,
+      hsl(var(--deep-black) / 0.5) 70%,
       hsl(var(--deep-black)) 100%
     );
   }
 
   .hover-card-lift {
-    @apply transition-all duration-500;
+    @apply transition-all duration-700;
   }
   .hover-card-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 60px -15px hsl(var(--gold) / 0.15);
-    border-color: hsl(var(--gold) / 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px -15px hsl(var(--gold) / 0.1);
+    border-color: hsl(var(--gold) / 0.25);
+  }
+
+  .luxwine-line {
+    width: 1px;
+    height: 60px;
+    background: hsl(var(--gold) / 0.4);
+  }
+
+  .luxwine-line-h {
+    width: 60px;
+    height: 1px;
+    background: hsl(var(--gold) / 0.4);
+  }
+
+  .letter-wide {
+    letter-spacing: 0.35em;
+  }
+
+  .letter-wider {
+    letter-spacing: 0.5em;
   }
 }
 

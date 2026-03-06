@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "Georgia", "serif"],
-        body: ["Inter", "system-ui", "sans-serif"],
+        display: ["Cormorant Garamond", "Georgia", "serif"],
+        body: ["Raleway", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -97,9 +97,9 @@ export default {
           "0%": { opacity: "0", transform: "translateY(60px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "line-expand": {
-          "0%": { width: "0" },
-          "100%": { width: "80px" },
+        "line-grow": {
+          "0%": { height: "0" },
+          "100%": { height: "60px" },
         },
       },
       animation: {
@@ -108,7 +108,7 @@ export default {
         "fade-up": "fade-up 0.8s ease-out forwards",
         "fade-in": "fade-in 1s ease-out forwards",
         "slide-up": "slide-up 1s ease-out forwards",
-        "line-expand": "line-expand 1s ease-out forwards",
+        "line-grow": "line-grow 1s ease-out forwards",
       },
     },
   },
