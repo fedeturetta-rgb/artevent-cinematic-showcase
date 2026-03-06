@@ -1,26 +1,32 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Film, Camera, Mic, Package, Clapperboard } from "lucide-react";
 
 const services = [
   {
+    icon: Film,
     title: "Film Aziendali",
-    description: "Storie cinematografiche che definiscono l'identità della tua azienda e risuonano con il tuo pubblico a livello emotivo.",
-    image: "https://images.unsplash.com/photo-1654723011663-2ac59c385b16?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    description: "Film cinematografici che catturano l'essenza e i valori della tua azienda con una produzione di livello hollywoodiano.",
   },
   {
+    icon: Camera,
     title: "Copertura Eventi",
-    description: "Copertura multi-camera e broadcast-quality di conferenze, gala, lanci di prodotto e eventi aziendali in tutto il mondo.",
-    image: "https://images.unsplash.com/photo-1654723011680-0e037c2a4f18?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    description: "Documentazione multi-camera che trasforma conferenze e gala in narrazioni visive coinvolgenti.",
   },
   {
+    icon: Clapperboard,
     title: "Brand Storytelling",
-    description: "Narrazioni strategiche che trasformano il messaggio del tuo brand in storie visive coinvolgenti che generano engagement e fedeltà.",
-    image: "https://images.unsplash.com/photo-1654723011662-e9be9ab3fe84?crop=entropy&cs=srgb&fm=jpg&q=85&w=800",
+    description: "Contenuti narrativi strategici che creano connessioni emotive profonde con il tuo pubblico target.",
   },
   {
+    icon: Package,
+    title: "Video Prodotto",
+    description: "Showcase di prodotto eleganti e ad alto impatto, progettati per convertire gli spettatori in clienti.",
+  },
+  {
+    icon: Mic,
     title: "Interviste Executive",
-    description: "Produzioni professionali e curate che posizionano i tuoi leader come voci autorevoli e thought leader del settore.",
-    image: "https://images.unsplash.com/photo-1664817550935-79d3b6255a82?q=80&w=800",
+    description: "Contenuti di thought-leadership professionali che posizionano i tuoi leader come autorità del settore.",
   },
 ];
 
@@ -29,52 +35,61 @@ const ServicesSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="services" className="section-padding bg-gradient-dark">
+    <section id="services" className="section-padding">
       <div ref={ref} className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ height: 0 }}
+          animate={inView ? { height: 60 } : {}}
+          transition={{ duration: 0.8 }}
+          className="w-px bg-primary/30 mx-auto mb-12"
+        />
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
           <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
             Cosa Facciamo
           </p>
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light">
-            La Nostra <span className="italic text-primary">Expertise</span>
+            I Nostri <span className="italic text-primary">Servizi</span>
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group cursor-pointer"
+              className="bg-background p-10 md:p-12 group cursor-pointer hover:bg-card transition-colors duration-700"
             >
-              <div className="aspect-[16/10] overflow-hidden mb-6">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-              </div>
-              <h3 className="font-display text-2xl md:text-3xl font-light mb-3 tracking-wide">
+              <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
+              <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
                 {service.title}
               </h3>
-              <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide mb-4">
+              <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide">
                 {service.description}
               </p>
-              <a
-                href="#contact"
-                className="font-body text-[11px] tracking-[0.3em] uppercase text-primary/70 hover:text-primary transition-colors duration-500 border-b border-primary/30 pb-1"
-              >
-                Scopri
-              </a>
             </motion.div>
           ))}
+          {/* Empty cell to complete the grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="bg-background p-10 md:p-12 flex items-center justify-center"
+          >
+            <a
+              href="#contact"
+              className="font-body text-[11px] tracking-[0.3em] uppercase text-primary/70 hover:text-primary transition-colors duration-500 border-b border-primary/30 pb-1"
+            >
+              Richiedi un Preventivo
+            </a>
+          </motion.div>
         </div>
       </div>
     </section>
