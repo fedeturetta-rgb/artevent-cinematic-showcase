@@ -49,7 +49,7 @@ const Navbar = () => {
           <img
             src={logoUrl}
             alt="Artevent Studio"
-            className="h-8 md:h-20 object-contain"
+            className="h-8 md:h-40 object-contain"
           />
         </a>
 
