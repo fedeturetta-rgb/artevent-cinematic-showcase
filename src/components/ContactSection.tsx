@@ -16,6 +16,12 @@ const contactInfo = [
     href: "tel:+390212345678",
   },
   {
+    icon: Phone,
+    label: "Telefono",
+    value: "+39 02 1234 5678",
+    href: "tel:+390212345678",
+  },
+  {
     icon: MapPin,
     label: "Indirizzo",
     value: "Via Callesella, 1425, 37040 Zimella VR",
