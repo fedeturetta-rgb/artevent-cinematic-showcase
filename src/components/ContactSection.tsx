@@ -4,22 +4,22 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 const contactInfo = [
   {
+    icon: Phone,
+    label: "Telefono",
+    value: "+39 02 1234 5678",
+    href: "tel:+390212345678",
+  },
+  {
+    icon: Phone,
+    label: "Telefono",
+    value: "+39 02 1234 5678",
+    href: "tel:+390212345678",
+  },
+  {
     icon: Mail,
     label: "Email",
     value: "info@arteventstudio.it",
     href: "mailto:info@arteventstudio.it",
-  },
-  {
-    icon: Phone,
-    label: "Telefono",
-    value: "+39 02 1234 5678",
-    href: "tel:+390212345678",
-  },
-  {
-    icon: Phone,
-    label: "Telefono",
-    value: "+39 02 1234 5678",
-    href: "tel:+390212345678",
   },
   {
     icon: MapPin,
