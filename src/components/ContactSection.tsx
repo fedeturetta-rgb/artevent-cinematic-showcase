@@ -6,13 +6,13 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Guido",
-    value: "+39 347-1206441",
+    value: "+39 347 120 64 41",
     href: "tel:+393471206441",
   },
   {
     icon: Phone,
     label: "Federico",
-    value: "+39 349-2182479",
+    value: "+39 349 218 24 79",
     href: "tel:+393492182479",
   },
   {
