@@ -11,7 +11,7 @@ const navLinks = [
 ];
 
 // Configura il percorso del logo qui
-const logoUrl = "public/images/ARTEVENT2_2.png";
+const logoUrl = "/images/ARTEVENT2_2.png";
 
 // dimensioni pulsante CTA (mobile + desktop)
 const ctaMobileClass = "text-[8px]"; // esempio: h-6 testo piccolissimo
