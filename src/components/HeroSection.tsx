@@ -77,7 +77,7 @@ const HeroSection = () => {
             href="#contact"
             className="px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:border-primary hover:text-primary transition-all duration-500"
           >
-            Prenota una Call
+            scopri i nostri servizi
           </a>
         </motion.div>
       </div>
