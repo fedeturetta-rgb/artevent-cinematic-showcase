@@ -56,11 +56,10 @@ const Navbar = () => {
         {/* Right side - CTA */}
         <a
           href="#contact"
-          className="hidden md:inline-flex font-body text-[11px] font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500"
+          className="inline-flex font-body text-[8px] font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500"
         >
           Contattaci
         </a>
-        <div className="md:hidden w-5" />
       </div>
 
       {/* Full-screen menu overlay */}
