@@ -12,8 +12,9 @@ const AboutSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Configura l'URL del tuo video qui
+  // Puoi usare un link YouTube, un iframe Vimeo (es. "https://player.vimeo.com/video/123456789"),
+  // un URL diretto a un MP4 remoto oppure un percorso locale come "/videos/reel.mp4".
   const videoUrl = "https://player.vimeo.com/video/1171082957";
-  // Oppure usa un URL di video locale: "/videos/reel.mp4"
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
@@ -91,8 +92,8 @@ const AboutSection = () => {
         <DialogContent className="max-w-4xl bg-black border-border">
           <DialogClose className="absolute top-4 right-4 z-50" />
           <div className="w-full aspect-video">
-            {videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") ? (
-              // YouTube embed
+            {videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be") || videoUrl.includes("vimeo.com") ? (
+              // Embed provider (YouTube/Vimeo)
               <iframe
                 width="100%"
                 height="100%"
@@ -104,7 +105,7 @@ const AboutSection = () => {
                 className="rounded-lg"
               />
             ) : videoUrl.startsWith("http") ? (
-              // Video from URL
+              // Video from URL (mp4 or other supported type)
               <video
                 width="100%"
                 height="100%"
