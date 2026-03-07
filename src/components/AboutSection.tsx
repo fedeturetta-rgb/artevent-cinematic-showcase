@@ -12,7 +12,7 @@ const AboutSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   // Configura l'URL del tuo video qui
-  const videoUrl = "https://vimeo.com/1171082957?";
+  const videoUrl = "https://vimeo.com/1171082957";
   // Oppure usa un URL di video locale: "/videos/reel.mp4"
 
   return (
