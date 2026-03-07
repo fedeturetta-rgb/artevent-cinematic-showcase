@@ -1,6 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Film, Camera, Mic, Package, Clapperboard } from "lucide-react";
+import filmAziendaliThumb from "@/assets/film-aziendali-thumb.jpg";
 
 const services = [
   {
