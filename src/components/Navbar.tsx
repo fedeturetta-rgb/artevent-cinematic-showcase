@@ -56,7 +56,7 @@ const Navbar = () => {
         {/* Right side - CTA */}
         <a
           href="#contact"
-          className={`inline-flex font-body ${ctaMobileClass} ${ctaDesktopClass} font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500`}
+          className="inline-flex font-body text-[8px] font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500"
         >
           Contattaci
         </a>
