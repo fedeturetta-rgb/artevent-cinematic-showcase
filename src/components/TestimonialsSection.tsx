@@ -24,6 +24,10 @@ const TestimonialsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [current, setCurrent] = useState(0);
 
+  const showTestimonials = false;   // 👈 QUI
+
+  if (!showTestimonials) return null;   // 👈 QUI
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % testimonials.length);
