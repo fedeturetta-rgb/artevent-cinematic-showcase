@@ -1,12 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Film, Camera, Mic, Package, Clapperboard } from "lucide-react";
+import filmAziendaliThumb from "@/assets/film-aziendali-thumb.jpg";
 
 const services = [
   {
     icon: Film,
     title: "Film Aziendali",
     description: "Film cinematografici che catturano l'essenza e i valori della tua azienda con una produzione di livello hollywoodiano.",
+    thumbnailUrl: filmAziendaliThumb,
   },
   {
     icon: Camera,
@@ -66,15 +68,32 @@ const ServicesSection = () => {
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-background p-10 md:p-12 group cursor-pointer hover:bg-card transition-colors duration-700"
+              className={`bg-background group cursor-pointer hover:bg-card transition-colors duration-700 overflow-hidden ${service.thumbnailUrl ? '' : 'p-10 md:p-12'}`}
             >
-              <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
-              <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide">
-                {service.description}
-              </p>
+              {service.thumbnailUrl ? (
+                <div className="relative">
+                  <img src={service.thumbnailUrl} alt={service.title} className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="p-10 md:p-12">
+                    <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
+                    <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
+                  <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground font-body text-xs leading-[2] tracking-wide">
+                    {service.description}
+                  </p>
+                </>
+              )}
             </motion.div>
           ))}
           {/* Empty cell to complete the grid */}
