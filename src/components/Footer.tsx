@@ -1,7 +1,7 @@
 import { Instagram, Linkedin, Youtube } from "lucide-react";
 
 // Configura il percorso del logo qui
-const logoUrl = "/images/logo.png";
+const logoUrl = "public/images/ARTEVENT2_2.png";
 
 const Footer = () => {
   return (
