@@ -18,7 +18,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Indirizzo",
-    value: "Via Roma 42, 20121 Milano, Italia",
+    value: "Via Callesella, 1425, 37040 Zimella VR",
     href: "https://maps.app.goo.gl/j3BSYqzer5mX5bsb7",
   },
 ];
