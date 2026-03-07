@@ -5,15 +5,15 @@ import { Mail, Phone, MapPin } from "lucide-react";
 const contactInfo = [
   {
     icon: Phone,
-    label: "Telefono",
-    value: "+39 02 1234 5678",
-    href: "tel:+390212345678",
+    label: "Guido",
+    value: "+39 347-1206441,
+    href: "tel:+393471206441",
   },
   {
     icon: Phone,
-    label: "Telefono",
-    value: "+39 02 1234 5678",
-    href: "tel:+390212345678",
+    label: "Federico",
+    value: "+39 349-2182479",
+    href: "tel:+393492182479",
   },
   {
     icon: Mail,
