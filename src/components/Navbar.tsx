@@ -10,6 +10,9 @@ const navLinks = [
   { label: "Contatti", href: "#contact" },
 ];
 
+// Configura il percorso del logo qui
+const logoUrl = "/images/logo.png";
+
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -43,15 +46,11 @@ const Navbar = () => {
 
         {/* Logo - center */}
         <a href="#home" className="absolute left-1/2 -translate-x-1/2 text-center">
-          <span className="font-display text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-foreground">
-            Arte
-          </span>
-          <span className="font-display text-2xl md:text-3xl font-light tracking-[0.15em] uppercase text-primary">
-            vent
-          </span>
-          <p className="font-body text-[9px] tracking-[0.5em] uppercase text-muted-foreground mt-0.5">
-            Studio
-          </p>
+          <img
+            src={logoUrl}
+            alt="Artevent Studio"
+            className="h-8 md:h-10 object-contain"
+          />
         </a>
 
         {/* Right side - CTA */}

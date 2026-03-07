@@ -1,5 +1,8 @@
 import { Instagram, Linkedin, Youtube } from "lucide-react";
 
+// Configura il percorso del logo qui
+const logoUrl = "/images/logo.png";
+
 const Footer = () => {
   return (
     <footer className="border-t border-border px-6 md:px-12 py-16">
@@ -7,15 +10,11 @@ const Footer = () => {
         <div className="flex flex-col items-center text-center gap-8">
           {/* Logo */}
           <a href="#home" className="text-center">
-            <span className="font-display text-xl font-light tracking-[0.15em] uppercase text-foreground">
-              Arte
-            </span>
-            <span className="font-display text-xl font-light tracking-[0.15em] uppercase text-primary">
-              vent
-            </span>
-            <p className="font-body text-[8px] tracking-[0.5em] uppercase text-muted-foreground mt-0.5">
-              Studio
-            </p>
+            <img
+              src={logoUrl}
+              alt="Artevent Studio"
+              className="h-6 object-contain"
+            />
           </a>
 
           {/* Social */}
