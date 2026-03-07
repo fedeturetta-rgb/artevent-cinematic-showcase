@@ -14,7 +14,6 @@ const services = [
     icon: Camera,
     title: "Copertura Eventi",
     description: "Documentazione multi-camera che trasforma conferenze e gala in narrazioni visive coinvolgenti.",
-    thumbnailUrl: "src/assets/ARTEVENT22.jpg",
   },
   {
     icon: Clapperboard,
