@@ -1,21 +1,35 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+
+const contactInfo = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@arteventstudio.it",
+    href: "mailto:info@arteventstudio.it",
+  },
+  {
+    icon: Phone,
+    label: "Telefono",
+    value: "+39 02 1234 5678",
+    href: "tel:+390212345678",
+  },
+  {
+    icon: MapPin,
+    label: "Indirizzo",
+    value: "Via Roma 42, 20121 Milano, Italia",
+    href: "https://maps.google.com/?q=Via+Roma+42+Milano",
+  },
+];
 
 const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-  };
 
   return (
     <section id="contact" className="section-padding bg-gradient-dark">
-      <div ref={ref} className="max-w-3xl mx-auto">
+      <div ref={ref} className="max-w-4xl mx-auto">
         <motion.div
           initial={{ height: 0 }}
           animate={inView ? { height: 60 } : {}}
@@ -30,58 +44,38 @@ const ContactSection = () => {
           className="text-center mb-20"
         >
           <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
-            Inizia un Progetto
+            Contattaci
           </p>
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light">
-            Creiamo Qualcosa di{" "}
-            <span className="italic text-primary">Potente</span>
+            Restiamo in{" "}
+            <span className="italic text-primary">Contatto</span>
           </h2>
         </motion.div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="space-y-8"
-        >
-          <div className="grid sm:grid-cols-2 gap-8">
-            <input
-              type="text"
-              placeholder="Il Tuo Nome"
-              required
-              className="w-full bg-transparent border-b border-border px-0 py-4 font-body text-xs tracking-wider text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors duration-500"
-            />
-            <input
-              type="text"
-              placeholder="Azienda"
-              className="w-full bg-transparent border-b border-border px-0 py-4 font-body text-xs tracking-wider text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors duration-500"
-            />
-          </div>
-          <input
-            type="email"
-            placeholder="Indirizzo Email"
-            required
-            className="w-full bg-transparent border-b border-border px-0 py-4 font-body text-xs tracking-wider text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors duration-500"
-          />
-          <textarea
-            placeholder="Raccontaci del tuo progetto..."
-            rows={4}
-            required
-            className="w-full bg-transparent border-b border-border px-0 py-4 font-body text-xs tracking-wider text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary transition-colors duration-500 resize-none"
-          />
-          <div className="pt-4">
-            <button
-              type="submit"
-              className="group inline-flex items-center gap-4 font-body text-[11px] tracking-[0.3em] uppercase text-primary hover:text-foreground transition-colors duration-500"
+        <div className="grid md:grid-cols-3 gap-px bg-border/30">
+          {contactInfo.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.href}
+              target={item.icon === MapPin ? "_blank" : undefined}
+              rel={item.icon === MapPin ? "noopener noreferrer" : undefined}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
+              className="bg-background p-10 group hover-card-lift border-glow text-center flex flex-col items-center"
             >
-              {submitted ? "Messaggio Inviato ✓" : "Invia il Messaggio"}
-              {!submitted && (
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" strokeWidth={1} />
-              )}
-            </button>
-          </div>
-        </motion.form>
+              <div className="w-14 h-14 border border-primary/20 rounded-full flex items-center justify-center mb-6 group-hover:border-primary/50 transition-colors duration-500">
+                <item.icon className="w-5 h-5 text-primary/60 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
+              </div>
+              <p className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-3">
+                {item.label}
+              </p>
+              <p className="font-body text-sm text-foreground/70 group-hover:text-foreground transition-colors duration-500 leading-relaxed">
+                {item.value}
+              </p>
+            </motion.a>
+          ))}
+        </div>
       </div>
     </section>
   );
