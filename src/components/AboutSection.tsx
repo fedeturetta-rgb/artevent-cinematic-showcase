@@ -16,6 +16,10 @@ const AboutSection = () => {
   // un URL diretto a un MP4 remoto oppure un percorso locale come "/videos/reel.mp4".
   const videoUrl = "https://player.vimeo.com/video/1171082957";
 
+  // Configura l'URL della thumbnail (foto o poster del video)
+  // Puoi usare un'immagine locale (es. "/images/thumbnail.jpg") o un URL remoto.
+  const thumbnailUrl = "/images/thumbnail.jpg"; // Cambia questo con il tuo percorso immagine
+
   return (
     <section id="about" className="section-padding bg-gradient-dark">
       <div ref={ref} className="max-w-6xl mx-auto">
@@ -72,7 +76,12 @@ const AboutSection = () => {
               onClick={() => setIsVideoOpen(true)}
               className="aspect-[4/3] bg-gradient-card border border-border overflow-hidden relative group cursor-pointer transition-all duration-700 hover:border-primary"
             >
-              <div className="absolute inset-0 flex items-center justify-center">
+              <img
+                src={thumbnailUrl}
+                alt="Video Thumbnail"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors duration-700">
                 <div className="text-center">
                   <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:border-primary transition-colors duration-700">
                     <div className="w-0 h-0 border-l-[14px] border-l-primary/70 border-t-[9px] border-t-transparent border-b-[9px] border-b-transparent ml-1 group-hover:border-l-primary transition-colors duration-700" />
