@@ -18,7 +18,7 @@ const AboutSection = () => {
 
   // Configura l'URL della thumbnail (foto o poster del video)
   // Puoi usare un'immagine locale (es. "/images/thumbnail.jpg") o un URL remoto.
-  const thumbnailUrl = "fedeturetta-rgb/artevent-cinematic-showcase/src/assets/ARTEVENT22.jpg"; // Cambia questo con il tuo percorso immagine
+  const thumbnailUrl = "src/assets/ARTEVENT22.jpg"; // Cambia questo con il tuo percorso immagine
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
