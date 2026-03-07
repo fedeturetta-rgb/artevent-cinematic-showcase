@@ -7,31 +7,44 @@ const projects = [
     title: "Lancio Brand TechVault",
     category: "Film Aziendale",
     description: "Una rivelazione cinematografica per il rebrand globale di TechVault, girata in tre continenti.",
+    // sample Vimeo video and a thumbnail image
+    videoUrl: "https://player.vimeo.com/video/123456789",
+    thumbnailUrl: "/videos/project1-thumb.jpg",
   },
   {
     title: "Summit 2025 Highlights",
     category: "Copertura Evento",
     description: "Copertura completa multi-giornata del summit annuale di leadership con oltre 5.000 partecipanti.",
+    videoUrl: "https://player.vimeo.com/video/987654321",
+    thumbnailUrl: "/videos/project2-thumb.jpg",
   },
   {
     title: "Lancio Prodotto Nova",
     category: "Video Prodotto",
     description: "Un video di lancio prodotto elegante che ha generato oltre 3 milioni di visualizzazioni nelle prime 48 ore.",
+    videoUrl: "https://player.vimeo.com/video/987654321",
+    thumbnailUrl: "/videos/project2-thumb.jpg",
   },
   {
     title: "Serie Visione CEO",
     category: "Intervista Executive",
     description: "Una serie di thought-leadership in 6 episodi con dirigenti Fortune 500.",
+    videoUrl: "https://player.vimeo.com/video/555333111",
+    thumbnailUrl: "/videos/project4-thumb.jpg",
   },
   {
     title: "Storia Rebrand Meridian",
     category: "Brand Storytelling",
     description: "Documentare la trasformazione di un'azienda centenaria per una nuova era.",
+    videoUrl: "https://player.vimeo.com/video/111222333",
+    thumbnailUrl: "/videos/project5-thumb.jpg",
   },
   {
     title: "Gala Annuale Apex",
     category: "Copertura Evento",
     description: "Gala catturato con eleganza cinematografica e montaggio in tempo reale.",
+    videoUrl: "https://player.vimeo.com/video/222333444",
+    thumbnailUrl: "/videos/project6-thumb.jpg",
   },
 ];
 
@@ -74,6 +87,15 @@ const PortfolioSection = () => {
               onClick={() => setSelected(i)}
               className="group cursor-pointer relative aspect-[4/3] bg-gradient-card border border-border overflow-hidden hover-card-lift"
             >
+              {/* thumbnail if available */}
+              {project.thumbnailUrl && (
+                <img
+                  src={project.thumbnailUrl}
+                  alt={project.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              )}
+
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 <span className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-2">
                   {project.category}
@@ -114,9 +136,56 @@ const PortfolioSection = () => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="aspect-video bg-gradient-card border border-border flex items-center justify-center mb-8">
-                <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
-                  <Play className="w-7 h-7 text-primary ml-1" strokeWidth={1} />
-                </div>
+                {projects[selected].videoUrl ? (
+                  // embed video same logic as AboutSection
+                  (() => {
+                    const url = projects[selected].videoUrl as string;
+                    if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("vimeo.com")) {
+                      return (
+                        <iframe
+                          width="100%"
+                          height="100%"
+                          src={url}
+                          title={projects[selected].title}
+                          frameBorder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="rounded-lg"
+                        />
+                      );
+                    } else if (url.startsWith("http")) {
+                      return (
+                        <video
+                          width="100%"
+                          height="100%"
+                          controls
+                          autoPlay
+                          className="rounded-lg bg-black"
+                        >
+                          <source src={url} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      );
+                    } else {
+                      return (
+                        <video
+                          width="100%"
+                          height="100%"
+                          controls
+                          autoPlay
+                          className="rounded-lg bg-black"
+                        >
+                          <source src={url} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      );
+                    }
+                  })()
+                ) : (
+                  <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
+                    <Play className="w-7 h-7 text-primary ml-1" strokeWidth={1} />
+                  </div>
+                )}
               </div>
               <p className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-3">
                 {projects[selected].category}
