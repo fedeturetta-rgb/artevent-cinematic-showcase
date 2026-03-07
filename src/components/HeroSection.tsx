@@ -47,7 +47,7 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="font-body text-[11px] md:text-xs tracking-[0.5em] uppercase text-primary/80 mb-8"
         >
-          Produzione Video Corporate Premium
+          Produzione Foto/Video Corporate
         </motion.p>
 
         <motion.h1
