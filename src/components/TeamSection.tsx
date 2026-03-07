@@ -44,7 +44,7 @@ const TeamSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-border/30">
+        <div className="grid md:grid-cols-2 gap-px bg-border/30">
           {teamMembers.map((member, i) => (
             <motion.div
               key={i}
