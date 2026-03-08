@@ -14,7 +14,7 @@ const AboutSection = () => {
   // Configura l'URL del tuo video qui
   // Puoi usare un link YouTube, un iframe Vimeo (es. "https://player.vimeo.com/video/123456789"),
   // un URL diretto a un MP4 remoto oppure un percorso locale come "/videos/reel.mp4".
-  const videoUrl = "https://player.vimeo.com/video/1171082957";
+  const videoUrl = "https://player.vimeo.com/video/1171592073";
 
   // Configura l'URL della thumbnail (foto o poster del video)
   // Puoi usare un'immagine locale (es. "/images/thumbnail.jpg") o un URL remoto.
