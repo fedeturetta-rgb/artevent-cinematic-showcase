@@ -18,7 +18,7 @@ const AboutSection = () => {
 
   // Configura l'URL della thumbnail (foto o poster del video)
   // Puoi usare un'immagine locale (es. "/images/thumbnail.jpg") o un URL remoto.
-  const thumbnailUrl = "/videos/hero-bg.mov"; // Cambia questo con il tuo percorso immagine
+  const thumbnailUrl = "https://player.vimeo.com/video/1171593256"; // Cambia questo con il tuo percorso immagine
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
