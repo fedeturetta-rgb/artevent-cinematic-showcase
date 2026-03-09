@@ -3,16 +3,16 @@ import { useRef } from "react";
 
 const teamMembers = [
   {
-    name: "Nome Cognome",
+    name: "Guido Frigo",
     title: "Regista & Fondatore",
     description: "Oltre 15 anni di esperienza nella regia di film aziendali e documentari per brand internazionali.",
-    image: "", // Inserisci il percorso dell'immagine, es: "/images/team-1.jpg"
+    image: "/images/Guido.JPG", // Inserisci il percorso dell'immagine, es: "/images/team-1.jpg"
   },
   {
-    name: "Nome Cognome",
+    name: "Federico Turetta",
     title: "Post-Produzione & Montaggio",
     description: "Esperto di color grading e montaggio narrativo per produzioni premium.",
-    image: "",
+    image: "/images/Fede.JPG",
   },
 ];
 
