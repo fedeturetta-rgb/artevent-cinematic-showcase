@@ -17,19 +17,6 @@ const HeroSection = () => {
         <div className="cinema-overlay absolute inset-0" />
       </div>
 
-      {/* Side slide indicators */}
-      <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20 hidden lg:flex flex-col gap-4">
-        {["01", "02", "03"].map((num, i) => (
-          <span
-            key={num}
-            className={`font-body text-xs tracking-widest transition-all duration-500 ${
-              i === 0 ? "text-primary" : "text-foreground/20"
-            }`}
-          >
-            {num}
-          </span>
-        ))}
-      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
