@@ -8,7 +8,7 @@ const projects = [
     category: "Film Aziendale",
     description: "Una rivelazione cinematografica per il rebrand globale di TechVault, girata in tre continenti.",
     // sample Vimeo video and a thumbnail image
-    videoUrl: "public/videos/1.mp4",
+    videoUrl: "/videos/1.mp4",
     thumbnailUrl: "/videos/1.mp4",
   },
   {
@@ -16,7 +16,7 @@ const projects = [
     category: "Copertura Evento",
     description: "Copertura completa multi-giornata del summit annuale di leadership con oltre 5.000 partecipanti.",
     videoUrl: "https://player.vimeo.com/video/987654321",
-    thumbnailUrl: "/videos/SHOWREEL_homepage_16.9.mp4",
+    thumbnailUrl: "/videos/2.mp4",
   },
   {
     title: "Lancio Prodotto Nova",
