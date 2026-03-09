@@ -93,56 +93,53 @@ const AboutSection = () => {
           </motion.div>
         </div>
 
-        {/* Photography sub-section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-28"
-        >
-          <div className="luxwine-line mx-auto mb-12" />
+        {/* Photography sub-section — mirrored layout (image left, text right) */}
+        <div className="grid md:grid-cols-2 gap-20 items-center mt-28">
+          {/* Visual - left */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="relative"
+          >
+            <div className="aspect-[16/9] bg-gradient-card border border-border overflow-hidden relative group transition-all duration-700 hover:border-primary">
+              <video
+                src="/videos/SHOWREEL_homepage_16.9.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+          </motion.div>
 
-          <div className="text-center mb-16">
+          {/* Text - right */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
               Fotografia
             </p>
-            <h3 className="font-display text-2xl md:text-4xl lg:text-5xl font-light leading-tight">
+            <h3 className="font-display text-2xl md:text-4xl lg:text-5xl font-light leading-tight mb-8">
               L'Arte di Catturare{" "}
               <span className="italic text-primary">l'Istante Perfetto</span>
             </h3>
-            <p className="text-foreground/50 font-body text-sm leading-[2] max-w-2xl mx-auto mt-8">
+            <p className="text-foreground/70 font-body text-sm leading-[2] mb-8">
               La fotografia è il cuore pulsante della nostra visione creativa. 
               Ogni scatto nasce dall'unione tra tecnica impeccabile e sensibilità artistica, 
               trasformando momenti fugaci in immagini senza tempo.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-            {photoFeatures.map((feature, i) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 + i * 0.1 }}
-                className="group bg-gradient-card border border-border p-8 lg:p-10 hover-card-lift"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="w-12 h-12 border border-primary/30 flex items-center justify-center shrink-0 group-hover:border-primary transition-colors duration-700">
-                    <feature.icon className="w-5 h-5 text-primary/70 group-hover:text-primary transition-colors duration-700" />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-xl lg:text-2xl font-light mb-3 group-hover:text-primary transition-colors duration-700">
-                      {feature.title}
-                    </h4>
-                    <p className="text-foreground/50 font-body text-sm leading-[1.8]">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            <p className="text-foreground/50 font-body text-sm leading-[2]">
+              Dalla composizione alla post-produzione, ogni fase è curata con la stessa 
+              attenzione al dettaglio che contraddistingue il nostro lavoro cinematografico — 
+              perché un'immagine straordinaria vale più di mille parole.
+            </p>
+            <div className="luxwine-line-h mt-10" />
+          </motion.div>
+        </div>
       </div>
 
       {/* Video Dialog */}
