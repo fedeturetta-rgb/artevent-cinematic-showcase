@@ -34,10 +34,6 @@ const AboutSection = () => {
           <p className="font-body text-[11px] tracking-[0.5em] uppercase text-primary/80 mb-6">
             Chi è Artevent Studio
           </p>
-          <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight">
-            Dove la Visione Incontra{" "}
-            <span className="italic text-primary">l'Arte Cinematografica</span>
-          </h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-20 items-center">
