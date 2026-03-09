@@ -125,8 +125,8 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <h3 className="font-display text-2xl md:text-4xl lg:text-5xl font-light leading-tight mb-8">
-              Dove la Visione Incontra{" "}
-              <span className="italic text-primary">l'Arte Cinematografica</span>
+              L'Arte di Catturare{" "}
+              <span className="italic text-primary">l'Istante Perfetto</span>
             </h3>
             <p className="text-foreground/70 font-body text-sm leading-[2] mb-8">
               La fotografia è il cuore pulsante della nostra visione creativa. 
