@@ -89,10 +89,13 @@ const PortfolioSection = () => {
             >
               {/* thumbnail if available */}
               {project.thumbnailUrl && (
-                <img
+                <video
                   src={project.thumbnailUrl}
-                  alt={project.title}
                   className="absolute inset-0 w-full h-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                 />
               )}
 
