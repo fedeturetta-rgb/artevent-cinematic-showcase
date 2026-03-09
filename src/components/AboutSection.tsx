@@ -80,6 +80,7 @@ const AboutSection = () => {
               <video
                 src={thumbnailUrl}
                 className="w-full h-full object-contain"
+                autoPlay
                 muted
                 loop
                 playsInline
