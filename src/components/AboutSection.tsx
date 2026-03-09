@@ -75,12 +75,14 @@ const AboutSection = () => {
           >
             <div
               onClick={() => setIsVideoOpen(true)}
-              className="aspect-[4/3] bg-gradient-card border border-border overflow-hidden relative group cursor-pointer transition-all duration-700 hover:border-primary"
+              className="aspect-[16/9] bg-gradient-card border border-border overflow-hidden relative group cursor-pointer transition-all duration-700 hover:border-primary"
             >
-              <img
+              <video
                 src={thumbnailUrl}
-                alt="Video Thumbnail"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
+                muted
+                loop
+                playsInline
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors duration-700">
                 <div className="text-center">
