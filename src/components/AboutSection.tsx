@@ -48,8 +48,8 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="font-display text-2xl md:text-4xl lg:text-5xl font-light leading-tight mb-8">
-              L'Arte del Cinema{" "}
-              <span className="italic text-primary">in Movimento</span>
+              Dove la Visione Incontra{" "}
+              <span className="italic text-primary">l'Arte Cinematografica</span>
             </h3>
             <p className="text-foreground/70 font-body text-sm leading-[2] mb-8">
               In Artevent Studio, fondiamo arte cinematografica e storytelling strategico. 
