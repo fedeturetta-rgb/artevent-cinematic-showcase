@@ -73,6 +73,7 @@ const AboutCarousel = () => {
   );
 };
 
+const AboutSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [isVideoOpen, setIsVideoOpen] = useState(false);
