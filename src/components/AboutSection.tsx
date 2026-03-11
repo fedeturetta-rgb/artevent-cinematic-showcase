@@ -103,16 +103,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="relative"
           >
-            <div className="aspect-[16/9] bg-gradient-card border border-border overflow-hidden relative group transition-all duration-700 hover:border-primary">
-              <video
-                src="/videos/SHOWREEL_homepage_16.9.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
+            <AboutCarousel />
           </motion.div>
 
           {/* Text - right */}
