@@ -1,10 +1,77 @@
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogClose,
 } from "@/components/ui/dialog";
+
+const carouselPhotos = [
+  { src: "/images/ARTEVENT22.jpg", title: "Corporate Gala", category: "Eventi" },
+  { src: "/images/ARTEVENT2_2.png", title: "Brand Identity", category: "Branding" },
+  { src: "/images/film-aziendali-thumb.jpg", title: "Set Cinematografico", category: "Behind the Scenes" },
+  { src: "/images/Fede.JPG", title: "Ritratto Creativo", category: "Ritratti" },
+  { src: "/images/Guido.JPG", title: "Ritratto Executive", category: "Ritratti" },
+  { src: "/images/hero-bg.jpg", title: "Location Scouting", category: "Paesaggi" },
+];
+
+const AboutCarousel = () => {
+  const [current, setCurrent] = useState(0);
+  const prev = () => setCurrent((c) => (c === 0 ? carouselPhotos.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === carouselPhotos.length - 1 ? 0 : c + 1));
+
+  return (
+    <div className="relative">
+      <div className="relative aspect-[16/9] bg-card border border-border overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={current}
+            src={carouselPhotos[current].src}
+            alt={carouselPhotos[current].title}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <span className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-1 block">
+            {carouselPhotos[current].category}
+          </span>
+          <h3 className="font-display text-lg font-light tracking-wide">
+            {carouselPhotos[current].title}
+          </h3>
+        </div>
+      </div>
+      <button
+        onClick={prev}
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 border border-border bg-background/50 backdrop-blur-sm flex items-center justify-center hover:border-primary transition-colors duration-300"
+      >
+        <ChevronLeft className="w-4 h-4 text-foreground/70" strokeWidth={1} />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 border border-border bg-background/50 backdrop-blur-sm flex items-center justify-center hover:border-primary transition-colors duration-300"
+      >
+        <ChevronRight className="w-4 h-4 text-foreground/70" strokeWidth={1} />
+      </button>
+      <div className="flex justify-center gap-2 mt-4">
+        {carouselPhotos.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              i === current ? "bg-primary w-5" : "bg-border hover:bg-primary/40"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -102,16 +169,7 @@ const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="relative"
           >
-            <div className="aspect-[16/9] bg-gradient-card border border-border overflow-hidden relative group transition-all duration-700 hover:border-primary">
-              <video
-                src="/videos/SHOWREEL_homepage_16.9.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
+            <AboutCarousel />
           </motion.div>
 
           {/* Text - right */}
