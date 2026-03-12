@@ -84,6 +84,7 @@ const PortfolioSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [selected, setSelected] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [galleryIndices, setGalleryIndices] = useState<Record<number, number>>({});
 
   const prevImage = (i: number) => {
@@ -208,17 +209,32 @@ const PortfolioSection = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {projects[selected].gallery ? (
-                <div className="grid grid-cols-4 grid-rows-2 gap-3 mb-8">
-                  {projects[selected].gallery!.slice(0,8).map((src, i) => (
-                    <div key={i} className="aspect-square bg-card border border-border overflow-hidden">
+                <>
+                  <div className="grid grid-cols-4 grid-rows-2 gap-3 mb-8">
+                    {projects[selected].gallery!.slice(0,8).map((src, i) => (
+                      <div key={i} className="aspect-square bg-card border border-border overflow-hidden">
+                        <img
+                          src={src}
+                          alt={`${projects[selected].title} - ${i + 1}`}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500 cursor-pointer"
+                          onClick={() => setSelectedImage(src)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  {selectedImage && (
+                    <div
+                      className="fixed inset-0 z-60 bg-background/90 flex items-center justify-center p-6"
+                      onClick={() => setSelectedImage(null)}
+                    >
                       <img
-                        src={src}
-                        alt={`${projects[selected].title} - ${i + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        src={selectedImage}
+                        className="max-w-full max-h-full object-contain"
+                        alt="fullscreen"
                       />
                     </div>
-                  ))}
-                </div>
+                  )}
+                </>
               ) : (
                 <div className="aspect-video bg-gradient-card border border-border flex items-center justify-center mb-8">
                   {projects[selected].videoUrl ? (
