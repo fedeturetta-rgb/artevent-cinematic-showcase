@@ -2,7 +2,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
 import { X, Play } from "lucide-react";
 
-const projects = [
+const projects: { title: string; category: string; description: string; videoUrl: string; thumbnailUrl: string; gallery?: string[] }[] = [
   {
     title: "Lancio Brand TechVault",
     category: "Film Aziendale",
@@ -15,8 +15,19 @@ const projects = [
     title: "Summit 2025 Highlights",
     category: "Copertura Evento",
     description: "Copertura completa multi-giornata del summit annuale di leadership con oltre 5.000 partecipanti.",
-    videoUrl: "https://player.vimeo.com/video/987654321",
+    videoUrl: "",
     thumbnailUrl: "/videos/2.mp4",
+    gallery: [
+      "/images/ARTEVENT22.jpg",
+      "/images/ARTEVENT2_2.png",
+      "/images/film-aziendali-thumb.jpg",
+      "/images/Fede.JPG",
+      "/images/Guido.JPG",
+      "/images/hero-bg.jpg",
+      "/images/ARTEVENT22.jpg",
+      "/images/ARTEVENT2_2.png",
+      "/images/film-aziendali-thumb.jpg",
+    ],
   },
   {
     title: "Lancio Prodotto Nova",
@@ -135,61 +146,60 @@ const PortfolioSection = () => {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="max-w-3xl w-full"
+              className={`w-full ${projects[selected].gallery ? 'max-w-5xl' : 'max-w-3xl'}`}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-video bg-gradient-card border border-border flex items-center justify-center mb-8">
-                {projects[selected].videoUrl ? (
-                  // embed video same logic as AboutSection
-                  (() => {
-                    const url = projects[selected].videoUrl as string;
-                    if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("vimeo.com")) {
-                      return (
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={url}
-                          title={projects[selected].title}
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="rounded-lg"
-                        />
-                      );
-                    } else if (url.startsWith("http")) {
-                      return (
-                        <video
-                          width="100%"
-                          height="100%"
-                          controls
-                          autoPlay
-                          className="rounded-lg bg-black"
-                        >
-                          <source src={url} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      );
-                    } else {
-                      return (
-                        <video
-                          width="100%"
-                          height="100%"
-                          controls
-                          autoPlay
-                          className="rounded-lg bg-black"
-                        >
-                          <source src={url} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      );
-                    }
-                  })()
-                ) : (
-                  <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
-                    <Play className="w-7 h-7 text-primary ml-1" strokeWidth={1} />
-                  </div>
-                )}
-              </div>
+              {projects[selected].gallery ? (
+                <div className="grid grid-cols-3 gap-3 mb-8">
+                  {projects[selected].gallery!.map((src, i) => (
+                    <div key={i} className="aspect-square bg-card border border-border overflow-hidden">
+                      <img
+                        src={src}
+                        alt={`${projects[selected].title} - ${i + 1}`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="aspect-video bg-gradient-card border border-border flex items-center justify-center mb-8">
+                  {projects[selected].videoUrl ? (
+                    (() => {
+                      const url = projects[selected].videoUrl as string;
+                      if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("vimeo.com")) {
+                        return (
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src={url}
+                            title={projects[selected].title}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            className="rounded-lg"
+                          />
+                        );
+                      } else {
+                        return (
+                          <video
+                            width="100%"
+                            height="100%"
+                            controls
+                            autoPlay
+                            className="rounded-lg bg-black"
+                          >
+                            <source src={url} type="video/mp4" />
+                          </video>
+                        );
+                      }
+                    })()
+                  ) : (
+                    <div className="w-20 h-20 border border-primary/40 rounded-full flex items-center justify-center">
+                      <Play className="w-7 h-7 text-primary ml-1" strokeWidth={1} />
+                    </div>
+                  )}
+                </div>
+              )}
               <p className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-3">
                 {projects[selected].category}
               </p>
