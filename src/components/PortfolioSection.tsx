@@ -85,7 +85,7 @@ const PortfolioSection = () => {
             ...prev,
             [index]: ((prev[index] || 0) + 1) % project.gallery!.length,
           }));
-        }, 3000); // change image every 3 seconds
+        }, 2000); // change image every 3 seconds
       }
     });
     return () => Object.values(intervals).forEach(clearInterval);
