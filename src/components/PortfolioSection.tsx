@@ -117,8 +117,8 @@ const PortfolioSection = () => {
                 <h3 className="font-display text-xl font-light tracking-wide">{project.title}</h3>
               </div>
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="w-16 h-16 border border-primary/40 rounded-full flex items-center justify-center bg-background/30 backdrop-blur-sm">
-                  <Play className="w-2 h-2 text-primary ml-0.5" strokeWidth={1} />
+                <div className="w-8 h-8 border border-primary/40 rounded-full flex items-center justify-center bg-background/30 backdrop-blur-sm">
+                  <Play className="w-5 h-5 text-primary ml-0.5" strokeWidth={1} />
                 </div>
               </div>
             </motion.div>
