@@ -1,5 +1,5 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { X, Play } from "lucide-react";
 
 const projects: { title: string; category: string; description: string; videoUrl: string; thumbnailUrl: string; gallery?: string[] }[] = [
@@ -74,6 +74,22 @@ const PortfolioSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [selected, setSelected] = useState<number | null>(null);
+  const [galleryIndices, setGalleryIndices] = useState<Record<number, number>>({});
+
+  useEffect(() => {
+    const intervals: Record<number, NodeJS.Timeout> = {};
+    projects.forEach((project, index) => {
+      if (project.gallery && project.gallery.length > 0) {
+        intervals[index] = setInterval(() => {
+          setGalleryIndices((prev) => ({
+            ...prev,
+            [index]: ((prev[index] || 0) + 1) % project.gallery!.length,
+          }));
+        }, 3000);
+      }
+    });
+    return () => Object.values(intervals).forEach(clearInterval);
+  }, []);
 
   return (
     <section id="portfolio" className="section-padding bg-gradient-dark">
@@ -109,8 +125,14 @@ const PortfolioSection = () => {
               onClick={() => setSelected(i)}
               className="group cursor-pointer relative aspect-[4/3] bg-gradient-card border border-border overflow-hidden hover-card-lift"
             >
-              {/* thumbnail if available */}
-              {project.thumbnailUrl && (
+              {/* gallery slideshow or video thumbnail */}
+              {project.gallery && project.gallery.length > 0 ? (
+                <img
+                  src={project.gallery[galleryIndices[i] || 0]}
+                  alt={`${project.title} - ${(galleryIndices[i] || 0) + 1}`}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : project.thumbnailUrl ? (
                 <video
                   src={project.thumbnailUrl}
                   className="absolute inset-0 w-full h-full object-cover"
@@ -119,7 +141,7 @@ const PortfolioSection = () => {
                   loop
                   playsInline
                 />
-              )}
+              ) : null}
 
               <div className="absolute inset-0 flex flex-col justify-end p-8">
                 <span className="font-body text-[10px] tracking-[0.4em] uppercase text-primary/70 mb-2">
