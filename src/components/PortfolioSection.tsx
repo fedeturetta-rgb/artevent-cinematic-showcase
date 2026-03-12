@@ -1,6 +1,6 @@
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
-import { X, Play } from "lucide-react";
+import { useRef, useState } from "react";
+import { X, Play, ChevronLeft, ChevronRight } from "lucide-react";
 
 const projects: { title: string; category: string; description: string; videoUrl: string; thumbnailUrl: string; gallery?: string[] }[] = [
   {
@@ -86,20 +86,21 @@ const PortfolioSection = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const [galleryIndices, setGalleryIndices] = useState<Record<number, number>>({});
 
-  useEffect(() => {
-    const intervals: Record<number, NodeJS.Timeout> = {};
-    projects.forEach((project, index) => {
-      if (project.gallery && project.gallery.length > 0) {
-        intervals[index] = setInterval(() => {
-          setGalleryIndices((prev) => ({
-            ...prev,
-            [index]: ((prev[index] || 0) + 1) % project.gallery!.length,
-          }));
-        }, 2000); // change image every 3 seconds
-      }
+  const prevImage = (i: number) => {
+    setGalleryIndices((prev) => {
+      const len = projects[i].gallery?.length || 1;
+      const current = prev[i] || 0;
+      return { ...prev, [i]: current === 0 ? len - 1 : current - 1 };
     });
-    return () => Object.values(intervals).forEach(clearInterval);
-  }, []);
+  };
+
+  const nextImage = (i: number) => {
+    setGalleryIndices((prev) => {
+      const len = projects[i].gallery?.length || 1;
+      const current = prev[i] || 0;
+      return { ...prev, [i]: (current + 1) % len };
+    });
+  };
 
   return (
     <section id="portfolio" className="section-padding bg-gradient-dark">
@@ -135,13 +136,27 @@ const PortfolioSection = () => {
               onClick={() => setSelected(i)}
               className="group cursor-pointer relative aspect-[4/3] bg-gradient-card border border-border overflow-hidden hover-card-lift"
             >
-              {/* gallery slideshow or video thumbnail */}
+              {/* gallery manual slideshow or video thumbnail */}
               {project.gallery && project.gallery.length > 0 ? (
-                <img
-                  src={project.gallery[galleryIndices[i] || 0]}
-                  alt={`${project.title} - ${(galleryIndices[i] || 0) + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
+                <>
+                  <img
+                    src={project.gallery[galleryIndices[i] || 0]}
+                    alt={`${project.title} - ${(galleryIndices[i] || 0) + 1}`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevImage(i); }}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/50 border border-border rounded-full flex items-center justify-center hover:border-primary transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4 text-foreground/70" strokeWidth={1} />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextImage(i); }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-background/50 border border-border rounded-full flex items-center justify-center hover:border-primary transition-colors"
+                  >
+                    <ChevronRight className="w-4 h-4 text-foreground/70" strokeWidth={1} />
+                  </button>
+                </>
               ) : project.thumbnailUrl ? (
                 <video
                   src={project.thumbnailUrl}
