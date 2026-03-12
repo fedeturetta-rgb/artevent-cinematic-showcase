@@ -126,12 +126,12 @@ const CarouselGallery = ({ onSelect }: { onSelect: (i: number) => void }) => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [current, setCurrent] = useState(0);
 
-  const prev = () => setCurrent((c) => (c === 0 ? photos.length - 1 : c - 1));
-  const next = () => setCurrent((c) => (c === photos.length - 1 ? 0 : c + 1));
-
   const showTestimonials = false;   // 👈 QUI
 
   if (!showTestimonials) return null;   // 👈 QUI
+
+  const prev = () => setCurrent((c) => (c === 0 ? photos.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === photos.length - 1 ? 0 : c + 1));
 
   return (
     <div ref={ref}>
