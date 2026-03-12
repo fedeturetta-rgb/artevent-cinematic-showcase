@@ -150,7 +150,7 @@ const PortfolioSection = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {projects[selected].gallery ? (
-                <div className="grid grid-cols-3 gap-3 mb-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mb-8">
                   {projects[selected].gallery!.map((src, i) => (
                     <div key={i} className="aspect-square bg-card border border-border overflow-hidden">
                       <img
