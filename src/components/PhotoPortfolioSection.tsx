@@ -19,6 +19,10 @@ const GridGallery = ({ onSelect }: { onSelect: (i: number) => void }) => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  const showTestimonials = false;   // 👈 QUI
+
+  if (!showTestimonials) return null;   // 👈 QUI
+
   return (
     <div ref={ref}>
       <motion.div
