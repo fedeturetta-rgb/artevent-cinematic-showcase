@@ -74,7 +74,7 @@ const Navbar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 top-24 bg-background/98 backdrop-blur-2xl z-40"
+            className="fixed inset-0 top-24 bg-background/98 backdrop-blur-2xl z-[60]"
           >
             <div className="flex flex-col items-center justify-center h-full gap-10 -mt-24">
               {navLinks.map((link, i) => (
