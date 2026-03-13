@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
@@ -27,11 +27,35 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const toggleMobileMenu = useCallback(() => {
+    setMobileOpen((prev) => !prev);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setMobileOpen(false);
+  }, []);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    };
+
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen, closeMobileMenu]);
 
   return (
     <motion.nav
@@ -44,35 +68,43 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24">
         {/* Hamburger - left */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="text-foreground/70 hover:text-primary transition-colors"
-          aria-label="Menu"
-        >
-          {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="relative z-[60]">
+          <button
+            type="button"
+            onClick={toggleMobileMenu}
+            className="p-2 -ml-2 text-foreground/70 hover:text-primary transition-colors"
+            aria-label={mobileOpen ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-navigation"
+          >
+            {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
 
         {/* Logo - center */}
-        <a href="#home" className="absolute left-1/2 -translate-x-1/2 text-center">
-          {logoImagePath ? (
-            <img
-              src={logoImagePath}
-              alt="Artevent logo"
-              className={`${logoMobileClass} ${logoDesktopClass} w-auto object-contain`}
-            />
-          ) : (
-            <Logo
-              size={32}
-              className={`${logoMobileClass} ${logoDesktopClass} w-auto`}
-            />
-          )}
-        </a>
+        <div className="absolute left-1/2 -translate-x-1/2 text-center pointer-events-none">
+          <a href="#home" onClick={closeMobileMenu} className="pointer-events-auto">
+            {logoImagePath ? (
+              <img
+                src={logoImagePath}
+                alt="Artevent logo"
+                className={`${logoMobileClass} ${logoDesktopClass} w-auto object-contain`}
+              />
+            ) : (
+              <Logo
+                size={32}
+                className={`${logoMobileClass} ${logoDesktopClass} w-auto`}
+              />
+            )}
+          </a>
+        </div>
 
         {/* Right side - CTA */}
         <a
           href="#contact"
+          onClick={closeMobileMenu}
           className={`inline-flex font-body ${ctaMobileClass} ${ctaDesktopClass} font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500`}
         >
           Contattaci
@@ -83,6 +115,7 @@ const Navbar = () => {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-navigation"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
