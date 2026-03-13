@@ -20,7 +20,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 120, className }) => (
     height={size}
     viewBox="0 0 120 120"
     fill="none"
-    xmlns="src/assets/ARTEVENT2_2.png" //inserisci logo
+    xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
     <circle cx="60" cy="60" r="60" fill="url(#paint0_linear)" />
