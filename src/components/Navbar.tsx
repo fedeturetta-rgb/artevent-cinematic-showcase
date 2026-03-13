@@ -59,7 +59,7 @@ const Navbar = () => {
               className="h-80 md:h-36 w-auto object-contain"
             />
           ) : (
-            <Logo size={80} />
+            <Logo size={32} />
           )}
         </a>
 
