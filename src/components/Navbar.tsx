@@ -3,29 +3,19 @@ import { motion } from "framer-motion";
 
 const logoUrl = "/images/ARTEVENT2_2.png";
 
-// dimensioni logo (mobile + desktop)
-const defaultLogoMobileClass = "h-20"; // altezza logo mobile
-const defaultLogoDesktopClass = "md:h-40"; // altezza logo desktop
-
-// dimensioni pulsante CTA (mobile + desktop) usando classi `h-...`
-const defaultCtaMobileClass = "h-10 px-4"; // altezza + padding mobile
-const defaultCtaDesktopClass = "md:h-12 md:px-6"; // altezza + padding desktop
+// dimensioni pulsante CTA (mobile + desktop)
+const defaultCtaMobileClass = "text-xs"; // testo più leggibile su mobile
+const defaultCtaDesktopClass = "md:text-sm"; // testo più grande su desktop
 
 type NavbarProps = {
-  /** Override classes for the logo size on mobile */
-  logoMobileClass?: string;
-  /** Override classes for the logo size on desktop */
-  logoDesktopClass?: string;
   /** Override classes for the CTA button on mobile */
   ctaMobileClass?: string;
   /** Override classes for the CTA button on desktop */
   ctaDesktopClass?: string;
 };
 
-const Navbar = ({ logoMobileClass, logoDesktopClass, ctaMobileClass, ctaDesktopClass }: NavbarProps = {}) => {
+const Navbar = ({ ctaMobileClass, ctaDesktopClass }: NavbarProps = {}) => {
   const [scrolled, setScrolled] = useState(false);
-  const mobileLogoClass = logoMobileClass ?? defaultLogoMobileClass;
-  const desktopLogoClass = logoDesktopClass ?? defaultLogoDesktopClass;
   const mobileCtaClass = ctaMobileClass ?? defaultCtaMobileClass;
   const desktopCtaClass = ctaDesktopClass ?? defaultCtaDesktopClass;
 
@@ -52,14 +42,14 @@ const Navbar = ({ logoMobileClass, logoDesktopClass, ctaMobileClass, ctaDesktopC
           <img
             src={logoUrl}
             alt="Artevent Studio"
-            className={`${mobileLogoClass} ${desktopLogoClass} object-contain`}
+            className="h-20 md:h-40 object-contain"
           />
         </a>
 
         {/* Right side - CTA */}
         <a
           href="#contact"
-          className={`ml-auto inline-flex items-center justify-center font-body ${mobileCtaClass} ${desktopCtaClass} font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500`}
+          className={`ml-auto inline-flex font-body ${mobileCtaClass} ${desktopCtaClass} font-medium tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-colors duration-500`}
         >
           Contattaci
         </a>
