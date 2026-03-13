@@ -16,8 +16,8 @@ const navLinks = [
 const logoImagePath = "/images/ARTEVENT2_2.png";
 
 // dimensioni logo (mobile + desktop)
-const logoMobileClass = "h-8";
-const logoDesktopClass = "md:h-8";
+const logoMobileClass = "h-36";
+const logoDesktopClass = "md:h-36";
 
 // dimensioni pulsante CTA (mobile + desktop)
 const ctaMobileClass = "text-[8px]"; // esempio: h-6 testo piccolissimo
