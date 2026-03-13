@@ -56,7 +56,7 @@ const Navbar = () => {
             <img
               src={logoImagePath}
               alt="Artevent logo"
-              className="h-40 md:h-80 w-auto object-contain"
+              className="h-80 md:h-80 w-auto object-contain"
             />
           ) : (
             <Logo size={32} />
