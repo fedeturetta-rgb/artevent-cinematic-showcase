@@ -42,7 +42,7 @@ const Navbar = ({ ctaMobileClass, ctaDesktopClass }: NavbarProps = {}) => {
           <img
             src={logoUrl}
             alt="Artevent Studio"
-            className="h-20 md:h-40 object-contain"
+            className="h-30 md:h-40 object-contain"
           />
         </a>
 
