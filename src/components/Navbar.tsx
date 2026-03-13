@@ -36,13 +36,13 @@ const Navbar = ({ ctaMobileClass, ctaDesktopClass }: NavbarProps = {}) => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between h-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-20 flex items-center justify-between h-24">
         {/* Logo - center */}
         <a href="#home" className="absolute left-1/2 -translate-x-1/2 text-center">
           <img
             src={logoUrl}
             alt="Artevent Studio"
-            className="h-20 md:h-80 object-contain"
+            className="h-20 md:h-40 object-contain"
           />
         </a>
 
