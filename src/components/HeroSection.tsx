@@ -55,20 +55,20 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-6 justify-center mt-14"
         >
           <a
-            href="#portfolio"
-            className="hidden px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
+            href="#portfolio" //per far apparire il tasto togli la scritta "hidden" dopo className
+            className="hidden px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500" 
           >
             Scopri chi siamo
           </a>
           <a
-            href="#about"
-            className="px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
+            href="#about" //per far apparire il tasto togli la scritta "hidden" dopo className
+            className="hidden px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
           >
             Scopri i Lavori
           </a>
           <a
-            href="#contact"
-            className="px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:border-primary hover:text-primary transition-all duration-500"
+            href="#contact" //per far apparire il tasto togli la scritta "hidden" dopo className
+            className="hidden px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:border-primary hover:text-primary transition-all duration-500"
           >
             scopri i servizi
           </a>
