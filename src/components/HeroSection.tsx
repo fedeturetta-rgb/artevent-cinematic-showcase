@@ -56,7 +56,7 @@ const HeroSection = () => {
         >
           <a
             href="#portfolio"
-            className="px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
+            className="hidden px-10 py-4 border border-foreground/20 text-foreground/80 font-body font-medium text-[11px] uppercase tracking-[0.3em] hover:bg-primary transition-all duration-500"
           >
             Scopri chi siamo
           </a>
