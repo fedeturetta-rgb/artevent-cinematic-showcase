@@ -74,8 +74,15 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
       >
+        <motion.span
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
+          className="font-body text-[9px] tracking-[0.4em] uppercase text-foreground/40"
+        >
+          Scorri in basso
+        </motion.span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
