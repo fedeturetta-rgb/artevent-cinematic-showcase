@@ -1,19 +1,44 @@
 import { motion } from "framer-motion";
 
+// Video 16:9 usato su desktop (già presente)
+const desktopVideoPath = "/videos/SHOWREEL_homepage_16.9.mp4";
+
+// Video 9:16 usato su mobile. Inserisci il percorso del tuo file in public/videos/
+// Esempio: "/videos/SHOWREEL_homepage_9.16.mp4"
+// Lascia stringa vuota per usare anche su mobile il video desktop 16:9
+const mobileVideoPath = "";
+
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background video */}
       <div className="absolute inset-0">
+        {/* Video 16:9 — desktop; se mobileVideoPath è vuoto, visibile anche su mobile */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover ${
+            mobileVideoPath ? "hidden md:block" : ""
+          }`}
         >
-          <source src="/videos/SHOWREEL_homepage_16.9.mp4" type="video/mp4" />
+          <source src={desktopVideoPath} type="video/mp4" />
         </video>
+
+        {/* Video 9:16 — solo mobile */}
+        {mobileVideoPath && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="block md:hidden w-full h-full object-cover"
+          >
+            <source src={mobileVideoPath} type="video/mp4" />
+          </video>
+        )}
+
         <div className="cinema-overlay absolute inset-0" />
       </div>
 
