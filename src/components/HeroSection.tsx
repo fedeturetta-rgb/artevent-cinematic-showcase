@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 // Video 16:9 usato su desktop (già presente)
-const desktopVideoPath = "/videos/SHOWREEL_homepage_16:9.mp4";
+const desktopVideoPath = "/videos/SHOWREEL_homepage_16:9_comp.mp4";
 
 // Video 9:16 usato su mobile. Inserisci il percorso del tuo file in public/videos/
 // Esempio: "/videos/SHOWREEL_homepage_9.16.mp4"
