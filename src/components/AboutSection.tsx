@@ -79,7 +79,7 @@ const AboutSection = () => {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const videoUrl = "https://player.vimeo.com/video/1171592073";
-  const thumbnailUrl = "/videos/SHOWREEL_homepage_letterbox.mp4";
+  const thumbnailUrl = "/videos/SHOWREEL_homepage_16:9_comp.mp4";
 
   return (
     <section id="about" className="section-padding bg-gradient-dark">
