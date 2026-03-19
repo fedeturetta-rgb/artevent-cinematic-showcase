@@ -25,7 +25,7 @@ const navLinks = {
 
 // Scegli qui un file presente in public/images.
 // Esempio: "/images/ARTEVENT2_2.png". Lascia stringa vuota per usare il logo SVG.
-const logoImagePath = "/images/ARTEVENT2_2.png";
+const logoImagePath = "/images/Logo_ARTEVENT_PRODUCTION_bianco.png";
 
 // dimensioni logo (mobile + desktop)
 const logoMobileClass = "h-36";
