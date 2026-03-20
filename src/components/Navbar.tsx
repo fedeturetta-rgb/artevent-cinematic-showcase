@@ -28,7 +28,7 @@ const navLinks = {
 const logoImagePath = "/images/Logo_ARTEVENT_PRODUCTION_bianco.png";
 
 // dimensioni logo (mobile + desktop)
-const logoMobileClass = "h-20";
+const logoMobileClass = "h-12";
 const logoDesktopClass = "md:h-20";
 
 // dimensioni pulsante CTA (mobile + desktop)
