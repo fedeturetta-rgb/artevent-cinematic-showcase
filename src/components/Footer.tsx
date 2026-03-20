@@ -2,7 +2,7 @@ import { Instagram, Linkedin, Youtube } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Configura il percorso del logo qui
-const logoUrl = "/images/ARTEVENT2_2.png";
+const logoUrl = "/images/Logo_ARTEVENT_PRODUCTION_bianco.png";
 
 const Footer = () => {
   const { language } = useLanguage();
