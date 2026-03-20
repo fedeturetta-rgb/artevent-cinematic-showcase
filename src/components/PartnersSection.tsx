@@ -7,19 +7,19 @@ type Partner = {
   logoSrc?: string;
 };
 
-// Inserisci qui i tuoi loghi (consigliato: /public/images/partners/...).
+const sharedPartnerLogo = "/images/partners/lidl-logo.svg";
+
+// Logo unico replicato nei 9 slot della versione griglia.
 const partners: Partner[] = [
-  { name: "Microsoft" },
-  { name: "Real Madrid" },
-  { name: "Volvo" },
-  { name: "Ralph Lauren" },
-  { name: "Kansas City Chiefs" },
-  { name: "Walmart" },
-  { name: "Google" },
-  { name: "Apple" },
-  { name: "NBCUniversal" },
-  { name: "Prime Video" },
-  { name: "Shopify" },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: sharedPartnerLogo },
 ];
 
 const gridPartners = partners.slice(0, 9);
@@ -30,7 +30,7 @@ const PartnerLogo = ({ partner }: { partner: Partner }) => {
       <img
         src={partner.logoSrc}
         alt={partner.name}
-        className="max-h-10 w-auto opacity-60 grayscale transition-all duration-300 group-hover:opacity-95 group-hover:grayscale-0"
+        className="max-h-20 w-auto transition-all duration-300"
         loading="lazy"
       />
     );
@@ -115,11 +115,11 @@ const PartnersSection = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 px-6 sm:px-0">
             {gridPartners.map((partner, index) => (
               <motion.div
-                key={`grid-${partner.name}`}
+                key={`grid-${partner.name}-${index}`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.45, delay: 0.03 * index }}
-                className="group relative aspect-[4/3] border border-border bg-gradient-card overflow-hidden hover-card-lift"
+                className="group relative aspect-[4/3] overflow-hidden"
               >
                 <div className="absolute inset-0 flex items-center justify-center p-6">
                   <PartnerLogo partner={partner} />
