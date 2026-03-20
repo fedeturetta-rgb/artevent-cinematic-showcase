@@ -20,7 +20,7 @@ const Footer = () => {
             <img
               src={logoUrl}
               alt="Artevent Studio"
-              className="h-20 object-contain"
+              className="h-8 object-contain"
             />
           </a>
 
