@@ -183,7 +183,7 @@ const PortfolioSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {projects.map((project, i) => (
             <motion.div
               key={project.title}
