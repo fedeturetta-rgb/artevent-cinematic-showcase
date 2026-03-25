@@ -15,25 +15,14 @@ type Project = {
 
 const projects: Project[] = [
   {
-    title: "Summit 2025 Highlights",
+    title: "AR-DY Parrucchieri",
     category: { it: "Copertura Evento", en: "Event Coverage" },
     description: {
       it: "Copertura completa multi-giornata del summit annuale di leadership con oltre 5.000 partecipanti.",
       en: "Full multi-day coverage of the annual leadership summit with over 5,000 attendees.",
     },
-    videoUrl: "",
-    thumbnailUrl: "/videos/2.mp4",
-    gallery: [
-      "/images/ARTEVENT22.jpg",
-      "/images/ARTEVENT2_2.png",
-      "/images/film-aziendali-thumb.jpg",
-      "/images/Fede.JPG",
-      "/images/Guido.JPG",
-      "/images/hero-bg.jpg",
-      "/images/ARTEVENT22.jpg",
-      "/images/ARTEVENT2_2.png",
-      "/images/film-aziendali-thumb.jpg",
-    ],
+    videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
+    thumbnailUrl: "/videos/1_comp.mp4",
   },
   {
     title: "Summit 2025 Highlights",
