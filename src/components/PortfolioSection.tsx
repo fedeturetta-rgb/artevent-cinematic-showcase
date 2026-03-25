@@ -28,6 +28,11 @@ type Project = {
   media?: MediaItem[];
 };
 
+type SelectedProjectState = {
+  projectIndex: number;
+  mediaIndex: number;
+};
+
 const projects: Project[] = [
   {
     title: "AR-DY Parrucchieri",
@@ -183,16 +188,28 @@ function getPreviewMedia(project: Project): MediaItem | null {
   return null;
 }
 
+function getMediaThumbnail(media: MediaItem, fallback: string): string {
+  if (media.type === "image") {
+    return media.src;
+  }
+
+  return media.poster ?? fallback;
+}
+
 const PortfolioSection = () => {
   const { language } = useLanguage();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [selected, setSelected] = useState<number | null>(null);
+  const [selected, setSelected] = useState<SelectedProjectState | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [activeSlide, setActiveSlide] = useState(0);
 
-  const selectedProject = selected !== null ? projects[selected] : null;
+  const selectedProject = selected !== null ? projects[selected.projectIndex] : null;
   const selectedMedia = selectedProject ? getProjectMedia(selectedProject) : [];
+
+  const openProject = (projectIndex: number, mediaIndex = 0) => {
+    setSelected({ projectIndex, mediaIndex });
+  };
 
   useEffect(() => {
     if (selected === null) {
@@ -200,8 +217,8 @@ const PortfolioSection = () => {
       return;
     }
 
-    setActiveSlide(0);
-    carouselApi?.scrollTo(0, true);
+    setActiveSlide(selected.mediaIndex);
+    carouselApi?.scrollTo(selected.mediaIndex, true);
   }, [selected, carouselApi]);
 
   useEffect(() => {
@@ -228,6 +245,7 @@ const PortfolioSection = () => {
     headingMain: language === "it" ? "Il Nostro" : "Our",
     headingAccent: language === "it" ? "Portfolio" : "Portfolio",
     dragHint: language === "it" ? "Trascina il carosello o usa le frecce" : "Drag the carousel or use the arrows",
+    quickOpen: language === "it" ? "Apri direttamente foto o video" : "Open a specific photo or video",
   };
 
   return (
@@ -257,6 +275,7 @@ const PortfolioSection = () => {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {projects.map((project, i) => {
             const previewMedia = getPreviewMedia(project);
+            const projectMedia = getProjectMedia(project);
 
             return (
               <motion.div
@@ -264,7 +283,7 @@ const PortfolioSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                onClick={() => setSelected(i)}
+                onClick={() => openProject(i, 0)}
                 className="group cursor-pointer relative aspect-[4/3] bg-gradient-card border border-border overflow-hidden hover-card-lift"
               >
                 {previewMedia?.type === "image" ? (
@@ -296,8 +315,51 @@ const PortfolioSection = () => {
                 </div>
 
                 <div className="absolute right-4 top-4 rounded-full border border-primary/40 bg-background/30 px-3 py-1 text-[10px] tracking-[0.3em] uppercase text-primary/80 backdrop-blur-sm">
-                  {getProjectMedia(project).length} media
+                  {projectMedia.length} media
                 </div>
+
+                {projectMedia.length > 1 && (
+                  <div className="absolute left-4 right-4 bottom-20 z-10">
+                    <p className="mb-2 text-[9px] uppercase tracking-[0.3em] text-foreground/60 opacity-90 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+                      {copy.quickOpen}
+                    </p>
+                    <div className="flex gap-2 overflow-x-auto pb-1 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+                      {projectMedia.map((media, mediaIndex) => {
+                        const thumbnailSrc = getMediaThumbnail(media, project.thumbnailUrl);
+
+                        return (
+                          <button
+                            key={`${project.title}-preview-${mediaIndex}`}
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              openProject(i, mediaIndex);
+                            }}
+                            className="relative h-12 w-12 shrink-0 overflow-hidden rounded-md border border-border/80 bg-background/70 backdrop-blur-sm transition-colors hover:border-primary"
+                            aria-label={`Open media ${mediaIndex + 1} for ${project.title}`}
+                          >
+                            {thumbnailSrc ? (
+                              <img
+                                src={thumbnailSrc}
+                                alt={`${project.title} preview ${mediaIndex + 1}`}
+                                className="h-full w-full object-cover"
+                                draggable={false}
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-background/70">
+                                <Play className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                              </div>
+                            )}
+                            {media.type === "video" && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                                <Play className="h-3.5 w-3.5 text-white" fill="currentColor" strokeWidth={1.5} />
+                              </div>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="w-10 h-10 border border-primary/40 rounded-full flex items-center justify-center bg-background/30 backdrop-blur-sm">
@@ -415,16 +477,41 @@ const PortfolioSection = () => {
                     <p className="font-body text-[10px] tracking-[0.35em] uppercase text-foreground/50 mb-3">
                       {copy.dragHint}
                     </p>
-                    <div className="flex items-center gap-2 md:justify-end">
+                    <div className="flex max-w-full items-center gap-2 overflow-x-auto pb-1 md:justify-end">
                       {selectedMedia.map((_, index) => (
                         <button
-                          key={`${selectedProject.title}-dot-${index}`}
+                          key={`${selectedProject.title}-thumb-${index}`}
                           onClick={() => carouselApi?.scrollTo(index)}
-                          className={`h-2 rounded-full transition-all duration-300 ${
-                            index === activeSlide ? "w-8 bg-primary" : "w-2 bg-border hover:bg-primary/50"
+                          className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border transition-all duration-300 ${
+                            index === activeSlide
+                              ? "border-primary shadow-[0_0_0_1px_rgba(212,175,55,0.45)]"
+                              : "border-border hover:border-primary/50"
                           }`}
                           aria-label={`Go to media ${index + 1}`}
-                        />
+                        >
+                          {(() => {
+                            const media = selectedMedia[index];
+                            const thumbnailSrc = getMediaThumbnail(media, selectedProject.thumbnailUrl);
+
+                            return thumbnailSrc ? (
+                              <img
+                                src={thumbnailSrc}
+                                alt={`${selectedProject.title} thumbnail ${index + 1}`}
+                                className="h-full w-full object-cover"
+                                draggable={false}
+                              />
+                            ) : (
+                              <div className="flex h-full w-full items-center justify-center bg-background/70">
+                                <Play className="h-4 w-4 text-primary" strokeWidth={1.5} />
+                              </div>
+                            );
+                          })()}
+                          {selectedMedia[index].type === "video" && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/25">
+                              <Play className="h-4 w-4 text-white" fill="currentColor" strokeWidth={1.5} />
+                            </div>
+                          )}
+                        </button>
                       ))}
                     </div>
                   </div>
