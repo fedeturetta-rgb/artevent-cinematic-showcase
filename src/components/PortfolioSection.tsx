@@ -53,7 +53,6 @@ const projects: Project[] = [
       { type: "image", src: "/images/Fede.JPG", alt: "Summit 2025 portrait" },
       { type: "video", src: "/videos/2.mp4", poster: "/videos/2.mp4" },
       { type: "image", src: "/images/Guido.JPG", alt: "Summit 2025 speaker" },
-      { type: "image", src: "/images/film-aziendali-thumb.jpg", alt: "Summit 2025 stage" },
     ],
   },
   {
