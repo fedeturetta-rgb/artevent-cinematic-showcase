@@ -45,12 +45,12 @@ const projects: Project[] = [
     videoUrl: "",
     thumbnailUrl: "/images/Parrucchiere/1.jpg",
     media: [
-      { type: "image", src: "/images/Parrucchiere/1.jpg", alt: "" },
       {
         type: "video",
         src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
         poster: "/videos/1_comp.mp4",
       },
+      { type: "image", src: "/images/Parrucchiere/1.jpg", alt: "" },
       { type: "image", src: "/images/Parrucchiere/2.jpg", alt: "" },
       { type: "image", src: "/images/Parrucchiere/3.jpg", alt: "" },
       { type: "image", src: "/images/Parrucchiere/6.jpg", alt: "" },
