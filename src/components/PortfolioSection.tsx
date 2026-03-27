@@ -86,13 +86,13 @@ const projects: Project[] = [
       it: "",
       en: "",
     },  
-    videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-    thumbnailUrl: "/videos/1_comp.mp4",
+    videoUrl: "",
+    thumbnailUrl: "/videos/2_comp.mp4",
     media: [
       {
         type: "video",
-        src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-        poster: "/videos/1_comp.mp4",
+        src: "https://drive.google.com/file/d/1kG-A8hOzd4n9cx3SfKDmO_hFBTjmS-0s/view?usp=sharing",
+        poster: "/videos/2_comp.mp4",
       },
       { type: "image", src: "/images/Parrucchiere/1.jpg", alt: "" },
       { type: "image", src: "/images/Parrucchiere/2.jpg", alt: "" },
