@@ -46,8 +46,7 @@ const PartnersSection = () => {
 
   const copy = {
     label: language === "it" ? "Collaborazioni" : "Collaborations",
-    heading: language === "it" ? "Aziende con cui abbiamo lavorato" : "Brands we have worked with",
-    sliderLabel: language === "it" ? "Versione Scorrevole" : "Scrolling Version",
+    heading: language === "it" ? "Ci hanno concesso la loro fiducia" : "Brands we have worked with",
   };
 
   return (
