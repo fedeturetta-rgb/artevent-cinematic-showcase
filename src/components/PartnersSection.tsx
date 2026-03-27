@@ -22,8 +22,6 @@ const partners: Partner[] = [
   { name: "Lidl", logoSrc: sharedPartnerLogo },
 ];
 
-const gridPartners = partners.slice(0, 9);
-
 const PartnerLogo = ({ partner }: { partner: Partner }) => {
   if (partner.logoSrc) {
     return (
@@ -52,7 +50,6 @@ const PartnersSection = () => {
     label: language === "it" ? "Collaborazioni" : "Collaborations",
     heading: language === "it" ? "Aziende con cui abbiamo lavorato" : "Brands we have worked with",
     sliderLabel: language === "it" ? "Versione Scorrevole" : "Scrolling Version",
-    gridLabel: language === "it" ? "Versione 3x3" : "3x3 Version",
   };
 
   return (
@@ -103,31 +100,6 @@ const PartnersSection = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, delay: 0.15 }}
-        >
-          <p className="px-6 sm:px-0 mb-4 font-body text-[10px] tracking-[0.35em] uppercase text-muted-foreground">
-            {copy.gridLabel}
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 px-6 sm:px-0">
-            {gridPartners.map((partner, index) => (
-              <motion.div
-                key={`grid-${partner.name}-${index}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.45, delay: 0.03 * index }}
-                className="group relative aspect-[4/3] overflow-hidden"
-              >
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <PartnerLogo partner={partner} />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
