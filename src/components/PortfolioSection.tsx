@@ -43,7 +43,7 @@ const projects: Project[] = [
       en: "",
     },
     videoUrl: "",
-    thumbnailUrl: "/videos/1_comp.mp4",
+    thumbnailUrl: "/images/Parrucchiere/1.jpg",
     media: [
       {
         type: "video",
