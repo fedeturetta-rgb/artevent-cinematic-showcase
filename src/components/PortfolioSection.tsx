@@ -36,10 +36,10 @@ type SelectedProjectState = {
 const projects: Project[] = [
   {
     title: "AR-DY Parrucchieri",
-    category: { it: "Video e Foto", en: "Video and Photos" },
+    category: { it: "", en: "" },
     description: {
-      it: "Racconto visuale con un montaggio video e contenuti fotografici coordinati nello stesso progetto.",
-      en: "Visual storytelling with an edited video and coordinated photo content in the same project.",
+      it: "",
+      en: "",
     },
     videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
     thumbnailUrl: "/videos/1_comp.mp4",
@@ -49,8 +49,12 @@ const projects: Project[] = [
         src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
         poster: "/videos/1_comp.mp4",
       },
-      { type: "image", src: "/images/ARTEVENT22.jpg", alt: "AR-DY backstage" },
-      { type: "image", src: "/images/ARTEVENT2_2.png", alt: "AR-DY campaign still" },
+      { type: "image", src: "https://drive.google.com/file/d/1iowrwD8dsDwjHATLr8qlhWaSbcAfL_SZ/view?usp=sharing", alt: "" },
+      { type: "image", src: "https://drive.google.com/file/d/1X9acyu7epgZeEf-5UaCkT2yyZYln0cvB/view?usp=sharing", alt: "" },
+      { type: "image", src: "https://drive.google.com/file/d/1hNzXnd-NQGENCGcCBtja_Nb2_-h6RaLc/view?usp=sharing", alt: "" },
+      { type: "image", src: "https://drive.google.com/file/d/1qHI0KSXaRa0Ics7rVj5mgiBVTvaDSGtp/view?usp=sharing", alt: "" },
+      { type: "image", src: "https://drive.google.com/file/d/1zsguoGDIZp0Vs3RakfSgZeLTF4uDUKYc/view?usp=sharing", alt: "" },
+      { type: "image", src: "https://drive.google.com/file/d/14iqssOBMDeJRTuxDfoTrN-n45p6vwmrZ/view?usp=sharing", alt: "" },
     ],
   },
   {
