@@ -11,8 +11,8 @@ const sharedPartnerLogo = "/images/partners/Lidl.png";
 
 // Logo unico replicato nei 9 slot della versione griglia.
 const partners: Partner[] = [
-  { name: "Lidl", logoSrc: sharedPartnerLogo },
-  { name: "Lidl", logoSrc: sharedPartnerLogo },
+  { name: "Lidl", logoSrc: "/images/partners/Lidl.png" },
+  { name: "Toyota", logoSrc: "/images/partners/Toyota.png" },
   { name: "Lidl", logoSrc: sharedPartnerLogo },
   { name: "Lidl", logoSrc: sharedPartnerLogo },
   { name: "Lidl", logoSrc: sharedPartnerLogo },
