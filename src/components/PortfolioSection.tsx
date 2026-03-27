@@ -36,13 +36,13 @@ type SelectedProjectState = {
 
 const projects: Project[] = [
   {
-    title: "AR-DY Parrucchieri",
+    title: "", //PARRUCCHIERE
     category: { it: "", en: "" },
     description: {
       it: "",
       en: "",
     },
-    videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
+    videoUrl: "",
     thumbnailUrl: "/videos/1_comp.mp4",
     media: [
       {
@@ -60,7 +60,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Atelier",
+    title: "", //MODA
     category: { it: "", en: "" },
     description: {
       it: ".",
@@ -80,14 +80,28 @@ const projects: Project[] = [
     ],
   },
   {
-    title: "Summit 2025 Highlights - Extended",
-    category: { it: "Video", en: "Video" },
+    title: "", //HOTEL
+    category: { it: "", en: "" },
     description: {
-      it: "Clip principale del progetto, utilizzabile come slide singola nel carosello.",
-      en: "Main clip for the project, usable as a single slide in the carousel.",
-    },
-    videoUrl: "",
-    thumbnailUrl: "/videos/2.mp4",
+      it: "",
+      en: "",
+    },  
+    videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
+    thumbnailUrl: "/videos/1_comp.mp4",
+    media: [
+      {
+        type: "video",
+        src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
+        poster: "/videos/1_comp.mp4",
+      },
+      { type: "image", src: "/images/Parrucchiere/1.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/2.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/3.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/6.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/4.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/5.jpg", alt: "" },
+      { type: "image", src: "/images/Parrucchiere/7.jpg", alt: "" },
+    ],
   },
   {
     title: "Serie Visione CEO",
