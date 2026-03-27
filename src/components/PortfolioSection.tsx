@@ -188,20 +188,20 @@ function getProjectMedia(project: Project): MediaItem[] {
 }
 
 function getPreviewMedia(project: Project): MediaItem | null {
-  if (project.media?.length) {
-    return project.media[0];
-  }
-
-  if (project.gallery?.length) {
-    return { type: "image", src: project.gallery[0], alt: project.title };
-  }
-
   if (project.thumbnailUrl) {
     if (isDirectVideoFile(project.thumbnailUrl)) {
       return { type: "video", src: project.thumbnailUrl, poster: project.thumbnailUrl };
     }
 
     return { type: "image", src: project.thumbnailUrl, alt: project.title };
+  }
+
+  if (project.media?.length) {
+    return project.media[0];
+  }
+
+  if (project.gallery?.length) {
+    return { type: "image", src: project.gallery[0], alt: project.title };
   }
 
   if (project.videoUrl) {
