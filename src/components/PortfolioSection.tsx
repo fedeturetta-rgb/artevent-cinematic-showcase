@@ -43,12 +43,12 @@ const projects: Project[] = [
       en: "",
     },
     videoUrl: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-    thumbnailUrl: "",
+    thumbnailUrl: "/videos/1_comp.mp4",
     media: [
       {
         type: "video",
         src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-        poster: "",
+        poster: "/videos/1_comp.mp4",
       },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
@@ -66,12 +66,12 @@ const projects: Project[] = [
       en: "A mixed media selection designed to showcase photos and clips in the same carousel.",
     },
     videoUrl: "",
-    thumbnailUrl: "",
+    thumbnailUrl: "/videos/2.mp4",
     media: [
       {
         type: "video",
         src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-        poster: "",
+        poster: "/videos/1_comp.mp4",
       },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
