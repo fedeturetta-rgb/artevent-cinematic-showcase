@@ -48,7 +48,6 @@ const projects: Project[] = [
       {
         type: "video",
         src: "https://drive.google.com/file/d/1T4l5_xxfhaF2RuGplF5Jk3qaNkx9LzC6/view?usp=sharing",
-        poster: "",
       },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
       { type: "image", src: "/images/ARTEVENT22.jpg", alt: "Summit 2025 opening" },
