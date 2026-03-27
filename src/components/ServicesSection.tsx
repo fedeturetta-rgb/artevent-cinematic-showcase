@@ -91,7 +91,7 @@ const ServicesSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
           {services.map((service, i) => (
             <motion.div
-              key={service.title}
+              key={service.title.en}
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
@@ -99,7 +99,7 @@ const ServicesSection = () => {
             >
               {service.thumbnailUrl ? (
                 <div className="relative">
-                  <img src={service.thumbnailUrl} alt={service.title} className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+                  <img src={service.thumbnailUrl} alt={service.title[language]} className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="p-10 md:p-12">
                     <service.icon className="w-7 h-7 text-primary/60 mb-8 group-hover:text-primary transition-colors duration-500" strokeWidth={1} />
                     <h3 className="font-display text-xl md:text-2xl font-light mb-4 tracking-wide">
