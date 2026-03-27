@@ -13,7 +13,6 @@ const sharedPartnerLogo = "/images/partners/Lidl.png";
 const partners: Partner[] = [
   { name: "Lidl", logoSrc: "/images/partners/Lidl.png" },
   { name: "Toyota", logoSrc: "/images/partners/toyota.png" },
-  { name: "Bottega Veneta", logoSrc: "/images/partners/bottegaveneta.png" },
   { name: "Fineco Bank", logoSrc: "/images/partners/FinecoBank_Logo.svg.png" },
   { name: "Brugi Store Este", logoSrc: "/images/partners/logo-brugi-store-este.png" },
   { name: "Motorola", logoSrc: "/images/partners/motorola.png" },
